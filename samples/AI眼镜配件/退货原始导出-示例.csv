@@ -1,0 +1,372 @@
+﻿事件ID,订单号,事件类型,退货原因代码,退货原因明细,产品,品名,规格,站点,发生时间,订单原因首件
+SAMPLE-EV-0001,SAMPLE-ORDER-1418,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/23 22:10,1
+SAMPLE-EV-0002,SAMPLE-ORDER-1842,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/12 9:33,1
+SAMPLE-EV-0003,SAMPLE-ORDER-9106,fba_return,NOT_AS_DESCRIBED,"Not as Expected|followed the size recommendation on the page, 2.5 is too high for me|Yes",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/26 14:07,1
+SAMPLE-EV-0004,SAMPLE-ORDER-2741,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/30 21:51,1
+SAMPLE-EV-0005,SAMPLE-ORDER-2145,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/14 11:15,1
+SAMPLE-EV-0006,SAMPLE-ORDER-6591,fba_return,UNAUTHORIZED_PURCHASE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/9 14:00,1
+SAMPLE-EV-0007,SAMPLE-ORDER-0752,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/8 17:02,1
+SAMPLE-EV-0008,SAMPLE-ORDER-9388,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|not worth the price for four bits of silicone|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/8 17:55,1
+SAMPLE-EV-0009,SAMPLE-ORDER-3558,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|second order from the same listing. These pads are noticeably harder than my first set|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/23 8:15,1
+SAMPLE-EV-0010,SAMPLE-ORDER-7492,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/8 1:54,1
+SAMPLE-EV-0011,SAMPLE-ORDER-3537,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/14 21:07,1
+SAMPLE-EV-0012,SAMPLE-ORDER-6775,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/11 1:02,1
+SAMPLE-EV-0013,SAMPLE-ORDER-4432,fba_return,FOUND_BETTER_PRICE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/15 13:08,1
+SAMPLE-EV-0014,SAMPLE-ORDER-1360,fba_return,DEFECTIVE,Defective|not good|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/29 4:56,1
+SAMPLE-EV-0015,SAMPLE-ORDER-2041,replacement,5,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/6 18:46,1
+SAMPLE-EV-0016,SAMPLE-ORDER-3526,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/2 11:48,1
+SAMPLE-EV-0017,SAMPLE-ORDER-5799,fba_return,FOUND_BETTER_PRICE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/28 12:51,0
+SAMPLE-EV-0018,SAMPLE-ORDER-0822,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/20 17:45,1
+SAMPLE-EV-0019,SAMPLE-ORDER-2335,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/21 20:50,1
+SAMPLE-EV-0020,SAMPLE-ORDER-7653,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/3 7:48,1
+SAMPLE-EV-0021,SAMPLE-ORDER-3815,fba_return,NOT_AS_DESCRIBED,Not as Expected|fit|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/6 6:51,1
+SAMPLE-EV-0022,SAMPLE-ORDER-4173,fba_return,MISSED_ESTIMATED_DELIVERY,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/31 16:49,0
+SAMPLE-EV-0023,SAMPLE-ORDER-9000,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/13 4:05,1
+SAMPLE-EV-0024,SAMPLE-ORDER-5463,fba_return,NOT_AS_DESCRIBED,Not as Described|Listing says sweat proof adhesive. Came off after one gym session|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/22 18:33,1
+SAMPLE-EV-0025,SAMPLE-ORDER-8970,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/5 14:28,0
+SAMPLE-EV-0026,SAMPLE-ORDER-7507,fba_return,DEFECTIVE,Defective|Sits too high. Took them off after an hour|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/31 18:31,1
+SAMPLE-EV-0027,SAMPLE-ORDER-0711,fba_return,NOT_AS_DESCRIBED,Not as Expected|very nice idea but I don't want anything glued to my glasses|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/7 16:03,1
+SAMPLE-EV-0028,SAMPLE-ORDER-9384,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/17 17:19,1
+SAMPLE-EV-0029,SAMPLE-ORDER-4846,fba_return,NOT_AS_DESCRIBED,Not as Expected|even 2.5 is not enough height for me|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/8 21:35,1
+SAMPLE-EV-0030,SAMPLE-ORDER-0951,fba_return,NOT_AS_DESCRIBED,Not as Expected|page says pick 2.5 if glasses slide. They did stop sliding but now sit too high and the photos are all tilted up|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/3 0:28,1
+SAMPLE-EV-0031,SAMPLE-ORDER-5220,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/21 17:24,1
+SAMPLE-EV-0032,SAMPLE-ORDER-4163,fba_return,ORDERED_WRONG_ITEM,"Wrong Item|2.5 was too much, swapping for the 1.8|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/28 21:24,1
+SAMPLE-EV-0033,SAMPLE-ORDER-2314,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/9 13:45,1
+SAMPLE-EV-0034,SAMPLE-ORDER-0409,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/10 15:37,1
+SAMPLE-EV-0035,SAMPLE-ORDER-7745,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/23 12:10,1
+SAMPLE-EV-0036,SAMPLE-ORDER-6098,fba_return,DAMAGED_BY_CARRIER,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/9 18:42,1
+SAMPLE-EV-0037,SAMPLE-ORDER-9074,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/26 23:46,1
+SAMPLE-EV-0038,SAMPLE-ORDER-9733,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/21 11:58,1
+SAMPLE-EV-0039,SAMPLE-ORDER-3857,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/14 22:07,0
+SAMPLE-EV-0040,SAMPLE-ORDER-3985,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/18 16:29,1
+SAMPLE-EV-0041,SAMPLE-ORDER-3061,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/21 14:26,1
+SAMPLE-EV-0042,SAMPLE-ORDER-3495,replacement,4,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/11 17:40,1
+SAMPLE-EV-0043,SAMPLE-ORDER-3216,replacement,5,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/24 2:16,1
+SAMPLE-EV-0044,SAMPLE-ORDER-7454,fba_return,UNDELIVERABLE_UNKNOWN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/24 15:20,1
+SAMPLE-EV-0045,SAMPLE-ORDER-2557,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/17 16:12,1
+SAMPLE-EV-0046,SAMPLE-ORDER-5261,fba_return,UNDELIVERABLE_UNKNOWN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/6/12 11:07,1
+SAMPLE-EV-0047,SAMPLE-ORDER-0203,fba_return,NOT_AS_DESCRIBED,Not as Expected|The page told me to go 2.5 for a low bridge. Too much lift|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/7 3:59,1
+SAMPLE-EV-0048,SAMPLE-ORDER-0503,fba_return,DEFECTIVE,Defective|They don't work for me. Glasses still slide when I run|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/20 11:30,1
+SAMPLE-EV-0049,SAMPLE-ORDER-6440,replacement,0,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/5 5:14,1
+SAMPLE-EV-0050,SAMPLE-ORDER-4821,fba_return,NOT_AS_DESCRIBED,"Not as Expected|too high on nose, as recommended size|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/26 5:42,1
+SAMPLE-EV-0051,SAMPLE-ORDER-8622,fba_return,NOT_AS_DESCRIBED,Not as Expected|thickness|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/4/26 20:35,1
+SAMPLE-EV-0052,SAMPLE-ORDER-8265,fba_return,DAMAGED_BY_FC,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/20 1:14,1
+SAMPLE-EV-0053,SAMPLE-ORDER-1516,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/18 21:38,0
+SAMPLE-EV-0054,SAMPLE-ORDER-9580,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/29 7:13,1
+SAMPLE-EV-0055,SAMPLE-ORDER-0734,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/10 9:12,0
+SAMPLE-EV-0056,SAMPLE-ORDER-8107,fba_return,NOT_COMPATIBLE,Not Compatible|not for Skyler model even though title says fits all|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/23 5:12,1
+SAMPLE-EV-0057,SAMPLE-ORDER-9171,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/22 23:54,1
+SAMPLE-EV-0058,SAMPLE-ORDER-2659,replacement,2,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/9 6:47,0
+SAMPLE-EV-0059,SAMPLE-ORDER-8780,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/7 4:41,1
+SAMPLE-EV-0060,SAMPLE-ORDER-9333,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/3 17:16,1
+SAMPLE-EV-0061,SAMPLE-ORDER-1494,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/18 15:51,1
+SAMPLE-EV-0062,SAMPLE-ORDER-6236,fba_return,NOT_COMPATIBLE,Not Compatible|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/13 6:07,1
+SAMPLE-EV-0063,SAMPLE-ORDER-6414,fba_return,NOT_AS_DESCRIBED,Not as Expected|didn't fit|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/22 13:56,1
+SAMPLE-EV-0064,SAMPLE-ORDER-0289,fba_return,NOT_AS_DESCRIBED,Not as Expected|n/a|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/23 15:19,0
+SAMPLE-EV-0065,SAMPLE-ORDER-1235,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/14 23:59,1
+SAMPLE-EV-0066,SAMPLE-ORDER-9359,replacement,0,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/20 13:17,1
+SAMPLE-EV-0067,SAMPLE-ORDER-1287,fba_return,NOT_COMPATIBLE,"Not Compatible|Great idea and really comfortable, but the glasses stopped charging in the case|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/24 6:22,1
+SAMPLE-EV-0068,SAMPLE-ORDER-1486,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/1 10:17,1
+SAMPLE-EV-0069,SAMPLE-ORDER-6669,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/3 11:15,1
+SAMPLE-EV-0070,SAMPLE-ORDER-5169,fba_return,NOT_AS_DESCRIBED,Not as Described|color is not what the picture shows|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/30 14:05,1
+SAMPLE-EV-0071,SAMPLE-ORDER-9722,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/27 16:43,1
+SAMPLE-EV-0072,SAMPLE-ORDER-9282,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/8/13 15:29,1
+SAMPLE-EV-0073,SAMPLE-ORDER-8226,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/15 1:00,1
+SAMPLE-EV-0074,SAMPLE-ORDER-6386,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/30 12:45,1
+SAMPLE-EV-0075,SAMPLE-ORDER-3974,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/28 3:33,1
+SAMPLE-EV-0076,SAMPLE-ORDER-6040,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/3 16:52,0
+SAMPLE-EV-0077,SAMPLE-ORDER-9469,fba_return,UNAUTHORIZED_PURCHASE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/4 2:27,1
+SAMPLE-EV-0078,SAMPLE-ORDER-9741,fba_return,NOT_AS_DESCRIBED,"Not as Expected|pad is wider than the original nose piece, edges stick out and look ugly|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/18 20:02,1
+SAMPLE-EV-0079,SAMPLE-ORDER-9567,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/15 5:02,1
+SAMPLE-EV-0080,SAMPLE-ORDER-3446,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/15 22:46,1
+SAMPLE-EV-0081,SAMPLE-ORDER-2280,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/29 23:22,1
+SAMPLE-EV-0082,SAMPLE-ORDER-5771,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/7 22:06,1
+SAMPLE-EV-0083,SAMPLE-ORDER-0105,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/14 0:19,1
+SAMPLE-EV-0084,SAMPLE-ORDER-6590,fba_return,NOT_AS_DESCRIBED,"Not as Expected|Pads are too thick, glasses sit way too high on my face|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/8 16:57,1
+SAMPLE-EV-0085,SAMPLE-ORDER-4677,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/6 23:07,1
+SAMPLE-EV-0086,SAMPLE-ORDER-7330,fba_return,MISSED_ESTIMATED_DELIVERY,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/7 21:10,1
+SAMPLE-EV-0087,SAMPLE-ORDER-2360,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/23 21:45,1
+SAMPLE-EV-0088,SAMPLE-ORDER-2436,fba_return,NOT_AS_DESCRIBED,Not as Expected|too short|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/17 22:07,1
+SAMPLE-EV-0089,SAMPLE-ORDER-1045,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/1 13:15,0
+SAMPLE-EV-0090,SAMPLE-ORDER-0109,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/24 8:14,1
+SAMPLE-EV-0091,SAMPLE-ORDER-7769,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|too wide for the nose area, sticks out past the frame|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/6/1 23:56,1
+SAMPLE-EV-0092,SAMPLE-ORDER-9488,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/21 14:00,1
+SAMPLE-EV-0093,SAMPLE-ORDER-9607,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/20 12:09,1
+SAMPLE-EV-0094,SAMPLE-ORDER-3750,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/26 13:31,1
+SAMPLE-EV-0095,SAMPLE-ORDER-0928,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/6 11:06,1
+SAMPLE-EV-0096,SAMPLE-ORDER-9450,fba_return,MISORDERED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/8 14:27,1
+SAMPLE-EV-0097,SAMPLE-ORDER-2553,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/9 7:20,1
+SAMPLE-EV-0098,SAMPLE-ORDER-4895,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|looked like the bag had been opened before, pads had lint on them|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/22 19:25,1
+SAMPLE-EV-0099,SAMPLE-ORDER-7741,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/3/26 5:55,1
+SAMPLE-EV-0100,SAMPLE-ORDER-6083,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/18 22:08,1
+SAMPLE-EV-0101,SAMPLE-ORDER-7326,fba_return,NOT_COMPATIBLE,"Not Compatible|does not fit the Headliner frame, nose area is a different shape|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/4 0:36,1
+SAMPLE-EV-0102,SAMPLE-ORDER-3588,fba_return,NOT_AS_DESCRIBED,"Not as Expected|too wide, visible from the front, embarrassing in meetings|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/3/27 23:52,1
+SAMPLE-EV-0103,SAMPLE-ORDER-8494,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/3 8:22,1
+SAMPLE-EV-0104,SAMPLE-ORDER-4594,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|none|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/16 1:55,1
+SAMPLE-EV-0105,SAMPLE-ORDER-9682,fba_return,NOT_AS_DESCRIBED,"Not as Described|Says 2 pairs. Got 3 single pads, not even 2 full pairs|Yes",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/17 23:03,1
+SAMPLE-EV-0106,SAMPLE-ORDER-9118,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/10 19:18,1
+SAMPLE-EV-0107,SAMPLE-ORDER-6370,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/11 21:44,1
+SAMPLE-EV-0108,SAMPLE-ORDER-4519,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/16 21:11,1
+SAMPLE-EV-0109,SAMPLE-ORDER-9099,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/8 19:58,1
+SAMPLE-EV-0110,SAMPLE-ORDER-9962,fba_return,DEFECTIVE,"Defective|glue fails when I sweat, pads slide around on the frame|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/19 23:26,1
+SAMPLE-EV-0111,SAMPLE-ORDER-8511,replacement,4,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/28 19:38,1
+SAMPLE-EV-0112,SAMPLE-ORDER-0282,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/17 9:22,1
+SAMPLE-EV-0113,SAMPLE-ORDER-0231,fba_return,MISORDERED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/7 19:58,1
+SAMPLE-EV-0114,SAMPLE-ORDER-6013,fba_return,NOT_AS_DESCRIBED,Not as Expected|not tall enough for a flat nose bridge|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/8/7 12:38,1
+SAMPLE-EV-0115,SAMPLE-ORDER-3214,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/8 17:01,1
+SAMPLE-EV-0116,SAMPLE-ORDER-8900,fba_return,UNDELIVERABLE_UNKNOWN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/20 22:36,1
+SAMPLE-EV-0117,SAMPLE-ORDER-1111,fba_return,NOT_COMPATIBLE,"Not Compatible|changes the camera angle, every video is aimed too high|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/19 6:37,1
+SAMPLE-EV-0118,SAMPLE-ORDER-8737,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/11 13:41,1
+SAMPLE-EV-0119,SAMPLE-ORDER-7260,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/13 8:29,1
+SAMPLE-EV-0120,SAMPLE-ORDER-7084,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/5 7:07,1
+SAMPLE-EV-0121,SAMPLE-ORDER-2717,fba_return,FOUND_BETTER_PRICE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/15 2:14,1
+SAMPLE-EV-0122,SAMPLE-ORDER-4722,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/18 16:52,1
+SAMPLE-EV-0123,SAMPLE-ORDER-9017,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/16 14:04,1
+SAMPLE-EV-0124,SAMPLE-ORDER-5717,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/21 16:40,1
+SAMPLE-EV-0125,SAMPLE-ORDER-5757,fba_return,DEFECTIVE,"Defective|not enough lift, lashes still hit the lens|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/15 19:27,1
+SAMPLE-EV-0126,SAMPLE-ORDER-4509,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/4 10:44,1
+SAMPLE-EV-0127,SAMPLE-ORDER-6555,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/26 3:45,1
+SAMPLE-EV-0128,SAMPLE-ORDER-4879,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/13 13:34,1
+SAMPLE-EV-0129,SAMPLE-ORDER-0675,fba_return,NOT_AS_DESCRIBED,"Not as Described|listing says 2 pairs, only 1 pair in the bag|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/14 6:54,1
+SAMPLE-EV-0130,SAMPLE-ORDER-8566,fba_return,ORDERED_WRONG_ITEM,Wrong Item|need thicker. Will order the 2.5|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/17 22:57,0
+SAMPLE-EV-0131,SAMPLE-ORDER-5078,fba_return,DEFECTIVE,"Defective|adhesive gave out the first time I wore them, one pad is gone|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/25 4:04,1
+SAMPLE-EV-0132,SAMPLE-ORDER-8790,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/3/16 6:22,1
+SAMPLE-EV-0133,SAMPLE-ORDER-8354,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/26 10:12,1
+SAMPLE-EV-0134,SAMPLE-ORDER-5037,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/4/2 6:44,0
+SAMPLE-EV-0135,SAMPLE-ORDER-1756,fba_return,NOT_AS_DESCRIBED,"Not as Expected|Listing said low nose bridge should pick 2.5mm. I did. Way too tall, frames float above my eyebrows|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/2 16:25,1
+SAMPLE-EV-0136,SAMPLE-ORDER-2480,fba_return,NOT_AS_DESCRIBED,Not as Expected|even the thin one raises the glasses too much for me|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/13 9:03,1
+SAMPLE-EV-0137,SAMPLE-ORDER-9194,fba_return,DAMAGED_BY_FC,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/23 16:03,1
+SAMPLE-EV-0138,SAMPLE-ORDER-4683,fba_return,MISORDERED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/9 5:28,1
+SAMPLE-EV-0139,SAMPLE-ORDER-9862,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/27 17:02,0
+SAMPLE-EV-0140,SAMPLE-ORDER-0079,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/30 11:41,1
+SAMPLE-EV-0141,SAMPLE-ORDER-8773,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/31 22:15,1
+SAMPLE-EV-0142,SAMPLE-ORDER-6593,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/24 2:45,1
+SAMPLE-EV-0143,SAMPLE-ORDER-7539,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/3 8:38,1
+SAMPLE-EV-0144,SAMPLE-ORDER-9798,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/4/8 5:19,1
+SAMPLE-EV-0145,SAMPLE-ORDER-7573,fba_return,NOT_AS_DESCRIBED,Not as Expected|thought these were screw in replacement nose pads. These are just stickers|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/13 11:25,1
+SAMPLE-EV-0146,SAMPLE-ORDER-2871,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/17 16:55,1
+SAMPLE-EV-0147,SAMPLE-ORDER-7427,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/10 21:26,1
+SAMPLE-EV-0148,SAMPLE-ORDER-9167,fba_return,DEFECTIVE,Defective|lifts the frame so much the camera now points at the ceiling|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/21 11:27,1
+SAMPLE-EV-0149,SAMPLE-ORDER-5279,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/23 12:55,1
+SAMPLE-EV-0150,SAMPLE-ORDER-1547,fba_return,NOT_COMPATIBLE,"Not Compatible|I have the large frame and bought standard. My mistake, reordering the large version|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/21 2:24,1
+SAMPLE-EV-0151,SAMPLE-ORDER-3858,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/10 0:50,1
+SAMPLE-EV-0152,SAMPLE-ORDER-8212,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/18 12:22,1
+SAMPLE-EV-0153,SAMPLE-ORDER-4248,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/16 3:07,1
+SAMPLE-EV-0154,SAMPLE-ORDER-9466,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/19 1:44,1
+SAMPLE-EV-0155,SAMPLE-ORDER-0259,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/6/28 19:06,1
+SAMPLE-EV-0156,SAMPLE-ORDER-9358,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/23 2:26,1
+SAMPLE-EV-0157,SAMPLE-ORDER-1905,fba_return,NOT_AS_DESCRIBED,"Not as Expected|1.8mm barely makes a difference, glasses still rest on my cheeks|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/5 22:56,1
+SAMPLE-EV-0158,SAMPLE-ORDER-3487,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/8/3 22:45,1
+SAMPLE-EV-0159,SAMPLE-ORDER-6316,fba_return,NOT_COMPATIBLE,"Not Compatible|wrong model for my glasses, ordered the other one|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/5 7:07,1
+SAMPLE-EV-0160,SAMPLE-ORDER-0166,fba_return,SWITCHEROO,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/4 21:23,1
+SAMPLE-EV-0161,SAMPLE-ORDER-4653,fba_return,NOT_COMPATIBLE,"Not Compatible|fits in the case but does not charge, the contacts don't touch|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/18 3:15,1
+SAMPLE-EV-0162,SAMPLE-ORDER-1892,fba_return,DEFECTIVE,Defective|Does not raise the glasses enough. Still sliding by lunch|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/4 0:26,1
+SAMPLE-EV-0163,SAMPLE-ORDER-5082,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/7 17:55,1
+SAMPLE-EV-0164,SAMPLE-ORDER-7405,fba_return,FOUND_BETTER_PRICE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/12 16:40,1
+SAMPLE-EV-0165,SAMPLE-ORDER-1979,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/4 12:26,1
+SAMPLE-EV-0166,SAMPLE-ORDER-6174,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/4/29 3:19,1
+SAMPLE-EV-0167,SAMPLE-ORDER-1520,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/21 14:25,1
+SAMPLE-EV-0168,SAMPLE-ORDER-4469,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|rough edge on one pad, scratches my skin|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/18 6:53,1
+SAMPLE-EV-0169,SAMPLE-ORDER-3573,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/18 20:18,1
+SAMPLE-EV-0170,SAMPLE-ORDER-0005,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/4/12 9:01,1
+SAMPLE-EV-0171,SAMPLE-ORDER-5320,replacement,2,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/8 21:29,1
+SAMPLE-EV-0172,SAMPLE-ORDER-2536,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/4/24 12:39,1
+SAMPLE-EV-0173,SAMPLE-ORDER-7324,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/1 14:55,1
+SAMPLE-EV-0174,SAMPLE-ORDER-9012,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/14 12:45,1
+SAMPLE-EV-0175,SAMPLE-ORDER-0055,fba_return,DEFECTIVE,"Defective|Hält nicht, der Kleber löst sich nach zwei Tagen|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,DE,2026/1/24 3:50,1
+SAMPLE-EV-0176,SAMPLE-ORDER-3742,fba_return,NOT_AS_DESCRIBED,"Not as Expected|too thick for my nose, glasses ride up high|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/1 12:27,1
+SAMPLE-EV-0177,SAMPLE-ORDER-5438,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/13 4:04,1
+SAMPLE-EV-0178,SAMPLE-ORDER-2021,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/7 21:50,1
+SAMPLE-EV-0179,SAMPLE-ORDER-5065,fba_return,ORDERED_WRONG_ITEM,"Wrong Item|should have ordered the thicker ones, that is on me. Reordered|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/4 7:16,1
+SAMPLE-EV-0180,SAMPLE-ORDER-5124,fba_return,NOT_COMPATIBLE,"Not Compatible|with pads on, glasses won't seat in the charging case|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/20 18:54,1
+SAMPLE-EV-0181,SAMPLE-ORDER-6291,fba_return,DEFECTIVE,Defective|slides|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/22 19:42,1
+SAMPLE-EV-0182,SAMPLE-ORDER-2968,fba_return,NOT_AS_DESCRIBED,Not as Expected|I wanted something to stop the arms slipping behind my ears. This only does the nose|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/20 8:58,1
+SAMPLE-EV-0183,SAMPLE-ORDER-2535,fba_return,ORDERED_WRONG_ITEM,"Wrong Item|I picked the thin one, my fault, exchanging for the thicker set|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/5 19:35,1
+SAMPLE-EV-0184,SAMPLE-ORDER-1013,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/18 15:39,1
+SAMPLE-EV-0185,SAMPLE-ORDER-6893,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|Too wide. Had to trim with scissors which defeats the purpose|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/12 15:33,1
+SAMPLE-EV-0186,SAMPLE-ORDER-3562,fba_return,MISORDERED,"Wrong Item|ordered 2.5 by mistake, will replace with 1.8|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/18 19:36,1
+SAMPLE-EV-0187,SAMPLE-ORDER-8517,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/22 4:13,1
+SAMPLE-EV-0188,SAMPLE-ORDER-1510,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/7 4:46,1
+SAMPLE-EV-0189,SAMPLE-ORDER-0076,replacement,5,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/2 11:08,1
+SAMPLE-EV-0190,SAMPLE-ORDER-8142,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/4 21:35,1
+SAMPLE-EV-0191,SAMPLE-ORDER-7105,fba_return,NOT_AS_DESCRIBED,Not as Described|missing the alcohol wipe and the placement guide shown in the photos|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/24 22:01,1
+SAMPLE-EV-0192,SAMPLE-ORDER-0503,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/25 12:59,1
+SAMPLE-EV-0193,SAMPLE-ORDER-9224,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/10 22:44,1
+SAMPLE-EV-0194,SAMPLE-ORDER-6389,fba_return,SWITCHEROO,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/10 7:33,0
+SAMPLE-EV-0195,SAMPLE-ORDER-7881,fba_return,NOT_COMPATIBLE,Not Compatible|case will not close with these installed|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/29 22:01,1
+SAMPLE-EV-0196,SAMPLE-ORDER-7117,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/5 22:54,1
+SAMPLE-EV-0197,SAMPLE-ORDER-2583,fba_return,NOT_AS_DESCRIBED,"Not as Expected|expected a full nose bridge replacement, not stick on pads|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/19 20:17,1
+SAMPLE-EV-0198,SAMPLE-ORDER-1124,fba_return,NOT_COMPATIBLE,"Not Compatible|ordered the large frame version, package label says standard|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/14 16:47,1
+SAMPLE-EV-0199,SAMPLE-ORDER-7609,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/1 2:01,1
+SAMPLE-EV-0200,SAMPLE-ORDER-3633,fba_return,DEFECTIVE,"Defective|sits too tall, bottom of the lens is above my eye line|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/7 22:34,1
+SAMPLE-EV-0201,SAMPLE-ORDER-9809,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/22 12:04,1
+SAMPLE-EV-0202,SAMPLE-ORDER-4509,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/6/28 12:02,1
+SAMPLE-EV-0203,SAMPLE-ORDER-5049,fba_return,UNAUTHORIZED_PURCHASE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/7 2:35,1
+SAMPLE-EV-0204,SAMPLE-ORDER-0307,fba_return,NOT_AS_DESCRIBED,Not as Expected|not what I expected|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/24 2:21,1
+SAMPLE-EV-0205,SAMPLE-ORDER-4695,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/6 23:49,1
+SAMPLE-EV-0206,SAMPLE-ORDER-2266,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/26 15:27,1
+SAMPLE-EV-0207,SAMPLE-ORDER-1461,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/26 6:50,1
+SAMPLE-EV-0208,SAMPLE-ORDER-5579,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/10 23:50,1
+SAMPLE-EV-0209,SAMPLE-ORDER-5966,fba_return,DAMAGED_BY_CARRIER,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/31 13:16,1
+SAMPLE-EV-0210,SAMPLE-ORDER-8858,fba_return,NOT_AS_DESCRIBED,Not as Expected|Wider than the built in pad. Looks like I taped something to my glasses|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/18 13:26,1
+SAMPLE-EV-0211,SAMPLE-ORDER-5938,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/5 4:05,1
+SAMPLE-EV-0212,SAMPLE-ORDER-4873,fba_return,NOT_AS_DESCRIBED,Not as Described|only the 1.8 fits the case. The 2.5 doesn't. Nowhere on the page does it say that|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/16 0:15,1
+SAMPLE-EV-0213,SAMPLE-ORDER-4268,fba_return,DEFECTIVE,"Defective|too thin to help, frame still touches my cheeks when I smile|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/6 2:09,0
+SAMPLE-EV-0214,SAMPLE-ORDER-6856,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|too thin|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/5 14:27,1
+SAMPLE-EV-0215,SAMPLE-ORDER-2199,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/21 16:15,0
+SAMPLE-EV-0216,SAMPLE-ORDER-3396,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/15 5:23,1
+SAMPLE-EV-0217,SAMPLE-ORDER-3802,fba_return,NOT_AS_DESCRIBED,"Not as Expected|overhangs the nose pad on both sides, you can see it from the front|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/11 8:29,1
+SAMPLE-EV-0218,SAMPLE-ORDER-1017,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|left sticky residue on my 300 dollar glasses when I peeled it off. Not happy|Yes,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/1 13:43,1
+SAMPLE-EV-0219,SAMPLE-ORDER-3629,fba_return,DEFECTIVE,Defective|Fell off on day one and my glasses hit the pavement. Lens is scratched. Ridiculous!|Yes,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/16 18:51,0
+SAMPLE-EV-0220,SAMPLE-ORDER-6791,fba_return,DEFECTIVE,"Defective|needs to be thicker, glasses slip when I look down|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/5 19:52,1
+SAMPLE-EV-0221,SAMPLE-ORDER-5757,fba_return,NOT_AS_DESCRIBED,Not as Described|photo shows glasses in the case with pads on. Mine do not fit in the case at all|Yes,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/19 8:36,0
+SAMPLE-EV-0222,SAMPLE-ORDER-4552,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/7 18:18,1
+SAMPLE-EV-0223,SAMPLE-ORDER-4913,fba_return,DEFECTIVE,"Defective|the pads are too wide, they catch dust on the exposed sticky edge|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/1 3:57,1
+SAMPLE-EV-0224,SAMPLE-ORDER-7950,fba_return,FOUND_BETTER_PRICE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/30 16:35,1
+SAMPLE-EV-0225,SAMPLE-ORDER-6039,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/14 23:08,1
+SAMPLE-EV-0226,SAMPLE-ORDER-8475,fba_return,MISORDERED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/9 1:53,1
+SAMPLE-EV-0227,SAMPLE-ORDER-6046,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/6 4:50,1
+SAMPLE-EV-0228,SAMPLE-ORDER-1558,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/21 1:52,1
+SAMPLE-EV-0229,SAMPLE-ORDER-9866,fba_return,DEFECTIVE,Defective|N/A,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/1 17:15,1
+SAMPLE-EV-0230,SAMPLE-ORDER-6179,fba_return,DAMAGED_BY_FC,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/9 12:17,1
+SAMPLE-EV-0231,SAMPLE-ORDER-5254,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/10 2:33,1
+SAMPLE-EV-0232,SAMPLE-ORDER-4312,fba_return,NOT_AS_DESCRIBED,Not as Expected|pads bigger than the nose rest so the glue edge shows|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/10 13:10,1
+SAMPLE-EV-0233,SAMPLE-ORDER-1733,fba_return,MISORDERED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/5 18:47,1
+SAMPLE-EV-0234,SAMPLE-ORDER-0464,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/7 12:29,1
+SAMPLE-EV-0235,SAMPLE-ORDER-3603,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/24 20:34,1
+SAMPLE-EV-0236,SAMPLE-ORDER-7438,fba_return,NOT_AS_DESCRIBED,"Not as Expected|bought for my dad, he says it feels weird and refuses to wear them|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/23 9:47,1
+SAMPLE-EV-0237,SAMPLE-ORDER-9130,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/15 5:52,1
+SAMPLE-EV-0238,SAMPLE-ORDER-3138,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/13 11:08,1
+SAMPLE-EV-0239,SAMPLE-ORDER-8746,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|too tall, pushes lenses away from my eyes|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/4 15:15,1
+SAMPLE-EV-0240,SAMPLE-ORDER-1427,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/11 3:09,1
+SAMPLE-EV-0241,SAMPLE-ORDER-6224,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/28 1:48,1
+SAMPLE-EV-0242,SAMPLE-ORDER-1256,fba_return,MISORDERED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/7 4:28,0
+SAMPLE-EV-0243,SAMPLE-ORDER-2012,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/6 18:49,1
+SAMPLE-EV-0244,SAMPLE-ORDER-4133,replacement,10,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/24 6:30,1
+SAMPLE-EV-0245,SAMPLE-ORDER-5675,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/25 1:21,1
+SAMPLE-EV-0246,SAMPLE-ORDER-2017,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/3 19:48,1
+SAMPLE-EV-0247,SAMPLE-ORDER-1554,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/24 4:55,1
+SAMPLE-EV-0248,SAMPLE-ORDER-4368,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/5 19:02,1
+SAMPLE-EV-0249,SAMPLE-ORDER-1480,fba_return,ORDERED_WRONG_ITEM,"Wrong Item|My bad, should have gotten the 1.8. Already reordered the thinner ones and they are fine|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/23 17:00,1
+SAMPLE-EV-0250,SAMPLE-ORDER-9596,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/11 9:09,1
+SAMPLE-EV-0251,SAMPLE-ORDER-2910,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/3/3 5:51,1
+SAMPLE-EV-0252,SAMPLE-ORDER-2686,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/25 3:07,1
+SAMPLE-EV-0253,SAMPLE-ORDER-5062,fba_return,NOT_AS_DESCRIBED,"Not as Described|pictured crystal clear, arrived cloudy white. Very visible on black frames|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/12 2:41,1
+SAMPLE-EV-0254,SAMPLE-ORDER-2845,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/23 1:09,0
+SAMPLE-EV-0255,SAMPLE-ORDER-0263,fba_return,DAMAGED_BY_FC,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/18 18:17,1
+SAMPLE-EV-0256,SAMPLE-ORDER-0651,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/30 3:55,1
+SAMPLE-EV-0257,SAMPLE-ORDER-1833,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/10 14:13,1
+SAMPLE-EV-0258,SAMPLE-ORDER-9544,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/19 5:02,1
+SAMPLE-EV-0259,SAMPLE-ORDER-6419,fba_return,MISSING_PARTS,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/20 1:27,1
+SAMPLE-EV-0260,SAMPLE-ORDER-7515,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/27 18:24,1
+SAMPLE-EV-0261,SAMPLE-ORDER-9936,fba_return,DAMAGED_BY_FC,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/2/27 2:42,1
+SAMPLE-EV-0262,SAMPLE-ORDER-7752,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/11 14:15,1
+SAMPLE-EV-0263,SAMPLE-ORDER-4361,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/10 0:17,0
+SAMPLE-EV-0264,SAMPLE-ORDER-0777,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/5 4:48,1
+SAMPLE-EV-0265,SAMPLE-ORDER-2819,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/16 9:44,1
+SAMPLE-EV-0266,SAMPLE-ORDER-8956,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/14 12:39,1
+SAMPLE-EV-0267,SAMPLE-ORDER-0826,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/22 17:14,1
+SAMPLE-EV-0268,SAMPLE-ORDER-7316,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/22 2:42,1
+SAMPLE-EV-0269,SAMPLE-ORDER-5407,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/14 1:00,1
+SAMPLE-EV-0270,SAMPLE-ORDER-2886,fba_return,DEFECTIVE,Defective|still slips down my nose in hot weather|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/31 21:05,1
+SAMPLE-EV-0271,SAMPLE-ORDER-4357,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/8 21:41,1
+SAMPLE-EV-0272,SAMPLE-ORDER-7202,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/8 18:12,1
+SAMPLE-EV-0273,SAMPLE-ORDER-9703,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/29 8:48,1
+SAMPLE-EV-0274,SAMPLE-ORDER-0965,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/28 18:40,1
+SAMPLE-EV-0275,SAMPLE-ORDER-4991,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/30 2:22,1
+SAMPLE-EV-0276,SAMPLE-ORDER-8812,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/20 18:55,1
+SAMPLE-EV-0277,SAMPLE-ORDER-8927,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/28 11:51,1
+SAMPLE-EV-0278,SAMPLE-ORDER-3443,fba_return,FOUND_BETTER_PRICE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/20 12:42,1
+SAMPLE-EV-0279,SAMPLE-ORDER-0888,replacement,10,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/1 14:36,1
+SAMPLE-EV-0280,SAMPLE-ORDER-4624,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/9 20:14,1
+SAMPLE-EV-0281,SAMPLE-ORDER-2836,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/9 6:14,1
+SAMPLE-EV-0282,SAMPLE-ORDER-2659,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/3/2 7:04,1
+SAMPLE-EV-0283,SAMPLE-ORDER-8064,replacement,0,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/10 8:45,1
+SAMPLE-EV-0284,SAMPLE-ORDER-9684,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/4/29 5:41,1
+SAMPLE-EV-0285,SAMPLE-ORDER-3961,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/10 5:17,1
+SAMPLE-EV-0286,SAMPLE-ORDER-8265,fba_return,DEFECTIVE,"Defective|still slides down, not thick enough|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/30 21:54,1
+SAMPLE-EV-0287,SAMPLE-ORDER-0183,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/7 5:21,1
+SAMPLE-EV-0288,SAMPLE-ORDER-5973,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/14 23:05,0
+SAMPLE-EV-0289,SAMPLE-ORDER-1306,fba_return,UNAUTHORIZED_PURCHASE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/4 3:35,1
+SAMPLE-EV-0290,SAMPLE-ORDER-4744,fba_return,DEFECTIVE,Defective|-|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/29 15:47,1
+SAMPLE-EV-0291,SAMPLE-ORDER-5521,fba_return,MISORDERED,Wrong Item|ordered twice by accident|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/2 10:16,1
+SAMPLE-EV-0292,SAMPLE-ORDER-7378,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/4 21:07,1
+SAMPLE-EV-0293,SAMPLE-ORDER-1985,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/8/19 9:56,1
+SAMPLE-EV-0294,SAMPLE-ORDER-5868,fba_return,ORDERED_WRONG_ITEM,"Wrong Item|gift for my husband, he has the large frames so these don't fit. Getting the right ones|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/22 1:35,1
+SAMPLE-EV-0295,SAMPLE-ORDER-6388,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|cheap|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/11 20:00,1
+SAMPLE-EV-0296,SAMPLE-ORDER-9137,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/22 6:05,1
+SAMPLE-EV-0297,SAMPLE-ORDER-8689,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/24 12:55,1
+SAMPLE-EV-0298,SAMPLE-ORDER-7835,fba_return,NOT_COMPATIBLE,Not Compatible|case|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/25 21:58,1
+SAMPLE-EV-0299,SAMPLE-ORDER-5589,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/8 9:47,1
+SAMPLE-EV-0300,SAMPLE-ORDER-3125,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/4/28 2:11,0
+SAMPLE-EV-0301,SAMPLE-ORDER-7167,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/15 14:16,1
+SAMPLE-EV-0302,SAMPLE-ORDER-0209,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/1 5:45,1
+SAMPLE-EV-0303,SAMPLE-ORDER-5323,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/11 3:57,1
+SAMPLE-EV-0304,SAMPLE-ORDER-6129,fba_return,NOT_AS_DESCRIBED,"Not as Expected|thinner than I hoped, no change in how the glasses sit|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/7/14 5:50,1
+SAMPLE-EV-0305,SAMPLE-ORDER-6846,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/1/27 7:50,1
+SAMPLE-EV-0306,SAMPLE-ORDER-4564,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/30 7:15,1
+SAMPLE-EV-0307,SAMPLE-ORDER-2129,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/20 11:10,1
+SAMPLE-EV-0308,SAMPLE-ORDER-4288,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/26 15:02,1
+SAMPLE-EV-0309,SAMPLE-ORDER-1955,replacement,4,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/16 6:56,1
+SAMPLE-EV-0310,SAMPLE-ORDER-9463,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|silicone is hard, leaves red marks on my nose after an hour|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/27 4:30,0
+SAMPLE-EV-0311,SAMPLE-ORDER-6287,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/23 1:49,1
+SAMPLE-EV-0312,SAMPLE-ORDER-2694,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/24 23:29,1
+SAMPLE-EV-0313,SAMPLE-ORDER-4994,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/26 23:49,1
+SAMPLE-EV-0314,SAMPLE-ORDER-6868,fba_return,FOUND_BETTER_PRICE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/25 2:45,1
+SAMPLE-EV-0315,SAMPLE-ORDER-7897,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/3 13:24,1
+SAMPLE-EV-0316,SAMPLE-ORDER-0766,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/16 22:35,1
+SAMPLE-EV-0317,SAMPLE-ORDER-2259,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/15 3:20,1
+SAMPLE-EV-0318,SAMPLE-ORDER-7711,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/23 16:18,1
+SAMPLE-EV-0319,SAMPLE-ORDER-6281,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/4/9 20:01,1
+SAMPLE-EV-0320,SAMPLE-ORDER-6445,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|much stiffer than I expected, not soft at all|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/13 7:52,1
+SAMPLE-EV-0321,SAMPLE-ORDER-4474,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/22 20:10,1
+SAMPLE-EV-0322,SAMPLE-ORDER-2168,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/3/29 19:34,1
+SAMPLE-EV-0323,SAMPLE-ORDER-8850,fba_return,NOT_COMPATIBLE,"Not Compatible|Passt nicht ins Ladeetui, zu gro?? f??r das Etui|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,DE,2026/2/23 5:03,1
+SAMPLE-EV-0324,SAMPLE-ORDER-2031,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/17 8:02,1
+SAMPLE-EV-0325,SAMPLE-ORDER-8412,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/10 19:57,1
+SAMPLE-EV-0326,SAMPLE-ORDER-7422,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/11 15:59,1
+SAMPLE-EV-0327,SAMPLE-ORDER-6052,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/23 22:47,1
+SAMPLE-EV-0328,SAMPLE-ORDER-7497,fba_return,ORDERED_WRONG_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/29 7:22,1
+SAMPLE-EV-0329,SAMPLE-ORDER-1520,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/6/4 9:27,1
+SAMPLE-EV-0330,SAMPLE-ORDER-1776,fba_return,DAMAGED_BY_FC,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/10 7:26,1
+SAMPLE-EV-0331,SAMPLE-ORDER-5026,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/10 5:44,1
+SAMPLE-EV-0332,SAMPLE-ORDER-1370,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/4/17 21:24,1
+SAMPLE-EV-0333,SAMPLE-ORDER-2150,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/28 20:52,1
+SAMPLE-EV-0334,SAMPLE-ORDER-8530,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/25 18:51,1
+SAMPLE-EV-0335,SAMPLE-ORDER-6412,fba_return,MISSING_PARTS,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/4 21:29,1
+SAMPLE-EV-0336,SAMPLE-ORDER-8005,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/2/6 22:06,1
+SAMPLE-EV-0337,SAMPLE-ORDER-6988,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/6/14 4:23,1
+SAMPLE-EV-0338,SAMPLE-ORDER-2276,fba_return,UNDELIVERABLE_UNKNOWN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/4 4:05,1
+SAMPLE-EV-0339,SAMPLE-ORDER-7094,fba_return,NOT_COMPATIBLE,Not Compatible|have to press the glasses down hard to get the charge light on|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/25 10:48,1
+SAMPLE-EV-0340,SAMPLE-ORDER-8410,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/5/5 3:29,1
+SAMPLE-EV-0341,SAMPLE-ORDER-4244,fba_return,NOT_AS_DESCRIBED,Not as Expected|Too thick. Went by the chart for low bridge. Glasses look like they are hovering|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/21 19:02,1
+SAMPLE-EV-0342,SAMPLE-ORDER-5724,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/23 11:41,1
+SAMPLE-EV-0343,SAMPLE-ORDER-3378,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/28 5:29,1
+SAMPLE-EV-0344,SAMPLE-ORDER-9775,fba_return,NOT_COMPATIBLE,"Not Compatible|received 2.5 but I ordered 1.8, bag was mislabeled|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/16 9:05,1
+SAMPLE-EV-0345,SAMPLE-ORDER-8775,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/5/10 1:05,1
+SAMPLE-EV-0346,SAMPLE-ORDER-0967,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/13 6:37,1
+SAMPLE-EV-0347,SAMPLE-ORDER-7552,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/7/17 23:38,1
+SAMPLE-EV-0348,SAMPLE-ORDER-3755,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/30 5:21,1
+SAMPLE-EV-0349,SAMPLE-ORDER-3985,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/23 11:08,1
+SAMPLE-EV-0350,SAMPLE-ORDER-3112,fba_return,MISORDERED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/7/31 4:44,1
+SAMPLE-EV-0351,SAMPLE-ORDER-5346,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/12 23:56,1
+SAMPLE-EV-0352,SAMPLE-ORDER-6066,fba_return,DEFECTIVE,Defective|pad came off inside the charging case and now it is stuck in there|Yes,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/7 5:16,0
+SAMPLE-EV-0353,SAMPLE-ORDER-7513,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/2/2 1:15,1
+SAMPLE-EV-0354,SAMPLE-ORDER-9366,fba_return,NOT_COMPATIBLE,Not Compatible||No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/8/6 23:49,1
+SAMPLE-EV-0355,SAMPLE-ORDER-3283,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/10 20:01,1
+SAMPLE-EV-0356,SAMPLE-ORDER-0214,fba_return,NOT_AS_DESCRIBED,"Not as Expected|width is off, hangs over the edge|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/4/12 10:04,1
+SAMPLE-EV-0357,SAMPLE-ORDER-6358,replacement,0,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/3/30 6:14,0
+SAMPLE-EV-0358,SAMPLE-ORDER-5939,fba_return,DAMAGED_BY_FC,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/23 2:38,1
+SAMPLE-EV-0359,SAMPLE-ORDER-1637,fba_return,QUALITY_UNACCEPTABLE,Poor Quality|turned yellow within two weeks|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/1/15 8:13,0
+SAMPLE-EV-0360,SAMPLE-ORDER-9736,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/3/8 3:56,1
+SAMPLE-EV-0361,SAMPLE-ORDER-9182,fba_return,NOT_COMPATIBLE,Not Compatible|doesn't fit|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/21 23:03,1
+SAMPLE-EV-0362,SAMPLE-ORDER-2368,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|too squishy, compresses flat so no lift left|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/7/10 9:39,1
+SAMPLE-EV-0363,SAMPLE-ORDER-9444,fba_return,DEFECTIVE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-2.5mm,US,2026/4/20 6:48,1
+SAMPLE-EV-0364,SAMPLE-ORDER-6573,fba_return,QUALITY_UNACCEPTABLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/5/12 1:42,1
+SAMPLE-EV-0365,SAMPLE-ORDER-1686,fba_return,NOT_AS_DESCRIBED,"Not as Described|says stays on for months, mine lasted two days|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,大号款-1.8mm,US,2026/1/5 11:13,1
+SAMPLE-EV-0366,SAMPLE-ORDER-3392,fba_return,QUALITY_UNACCEPTABLE,"Poor Quality|too low, no real lift|No",A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/6/16 20:18,1
+SAMPLE-EV-0367,SAMPLE-ORDER-0354,fba_return,NOT_AS_DESCRIBED,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-1.8mm,US,2026/5/17 0:19,1
+SAMPLE-EV-0368,SAMPLE-ORDER-6372,fba_return,UNWANTED_ITEM,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/2/16 1:28,1
+SAMPLE-EV-0369,SAMPLE-ORDER-7000,fba_return,NOT_AS_DESCRIBED,Not as Described|No,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/8/14 4:22,1
+SAMPLE-EV-0370,SAMPLE-ORDER-2471,fba_return,NO_REASON_GIVEN,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/7 14:41,1
+SAMPLE-EV-0371,SAMPLE-ORDER-6797,fba_return,NOT_COMPATIBLE,,A款-防滑鼻托套装(2对装),智能眼镜 硅胶防滑鼻托 背胶款 2对装,标准款-2.5mm,US,2026/1/16 0:23,1

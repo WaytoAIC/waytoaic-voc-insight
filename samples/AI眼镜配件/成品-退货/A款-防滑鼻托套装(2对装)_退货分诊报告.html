@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>退货 VOC 分诊报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E9ECF0; --surface:#FFFFFF; --ink:#131C29; --muted:#64717F;
+  --rule:#D2D8E0; --indigo:#1C2C4A;
+  --sans:"IBM Plex Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.7;letter-spacing:.01em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted)}
+section{padding:64px 0;border-top:1px solid var(--rule)}
+section:first-of-type{border-top:none}
+h2{font-size:clamp(22px,3.4vw,30px);font-weight:600;letter-spacing:-.01em;margin:10px 0 6px}
+.lede{color:var(--muted);max-width:66ch;margin:0 0 34px;font-size:15.5px}
+h3{font-size:17px;font-weight:600;margin:0 0 8px}
+.note{font-size:14px;color:var(--muted);margin-top:20px;max-width:68ch;line-height:1.75}
+
+.mast{padding:56px 0 44px;background:var(--indigo);color:#EEF1F5;position:relative;overflow:hidden}
+.mast::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 44px);
+  pointer-events:none}
+.mast .eyebrow{color:#8EA0BD}
+.mast h1{font-size:clamp(30px,5.6vw,52px);font-weight:600;line-height:1.18;letter-spacing:-.02em;
+  margin:14px 0 0;max-width:19ch}
+.mast h1 em{font-style:normal;color:#F0C46A}
+.subject{margin-top:18px;font-size:14.5px;color:#A9B8CE;font-family:var(--mono)}
+.funnel{display:flex;flex-wrap:wrap;margin-top:40px;border-top:1px solid rgba(255,255,255,.18)}
+.fstep{flex:1 1 180px;padding:20px 22px 20px 0;border-right:1px solid rgba(255,255,255,.14)}
+.fstep:last-child{border-right:none}
+.fstep .num{font-family:var(--mono);font-size:clamp(24px,4.2vw,36px);font-weight:500;line-height:1}
+.fstep.keep .num{color:#F0C46A}
+.fstep .lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#8EA0BD;margin-top:10px}
+.fstep .sub{font-size:13px;color:#B7C4D6;margin-top:6px;line-height:1.5}
+
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(172px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin-bottom:34px}
+.kpi .k{background:var(--surface);padding:18px 20px 20px}
+.kpi .k .n{font-family:var(--mono);font-size:26px;font-weight:500;letter-spacing:-.02em;line-height:1}
+.kpi .k .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin-top:9px}
+.kpi .k .s{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5}
+
+.sankey-shell{background:var(--surface);border:1px solid var(--rule);padding:22px 18px 14px}
+.sankey-scroll{overflow-x:auto;overflow-y:hidden}
+svg.sankey{width:100%;height:auto;display:block;overflow:visible}
+@media(max-width:780px){
+  .sankey-shell{padding:18px 12px 12px}
+  svg.sankey{min-width:660px}
+  .sankey-scroll::after{content:"左右滑动查看完整图";display:block;font-family:var(--mono);
+    font-size:11px;color:var(--muted);padding-top:8px}
+}
+.ribbon{opacity:.5;transition:opacity .18s}
+.sankey.dim .ribbon{opacity:.13}
+.sankey.dim .ribbon.on{opacity:.82}
+.nodelab{font-family:var(--mono);font-size:11px;fill:var(--ink)}
+.nodeval{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+.nodehit{cursor:pointer}
+.sankey-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:16px;padding-top:14px;
+  border-top:1px solid var(--rule);font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.sankey-legend b{font-weight:500;color:var(--ink)}
+.swatch{display:inline-block;width:9px;height:9px;margin-right:6px}
+.readout{margin-top:14px;font-size:14px;color:var(--muted);min-height:1.7em}
+.readout b{color:var(--ink);font-weight:500}
+
+.triage{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.tc{background:var(--surface);padding:22px 20px 24px;border-top:3px solid var(--c)}
+.tc .code{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--c);font-weight:600}
+.tc .big{font-family:var(--mono);font-size:38px;font-weight:500;line-height:1;margin:12px 0 2px}
+.tc .pct{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.tc .who{margin-top:16px;font-size:13px;font-weight:600}
+.tc .act{margin-top:4px;font-size:13.5px;color:var(--muted);line-height:1.6}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr;gap:24px}}
+.panel{background:var(--surface);border:1px solid var(--rule);padding:24px}
+.bar-row{display:grid;grid-template-columns:150px 1fr 34px;align-items:center;gap:12px;
+  padding:5px 0;font-size:13.5px}
+.bar-track{height:12px;background:#E4E8ED}
+.bar-fill{height:100%;background:var(--indigo)}
+.bar-row .v{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right}
+@media(max-width:520px){.bar-row{grid-template-columns:110px 1fr 30px;font-size:12.5px}}
+
+.rtable-scroll{overflow-x:auto;border:1px solid var(--rule);background:var(--surface)}
+table.reasons{width:100%;min-width:660px;border-collapse:collapse;font-size:14px}
+table.reasons th{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);text-align:right;padding:12px;border-bottom:1px solid var(--rule);
+  font-weight:500;white-space:nowrap}
+table.reasons th:nth-child(-n+2){text-align:left}
+table.reasons td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:right;
+  font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+table.reasons td:nth-child(1){text-align:left;font-family:var(--sans);font-size:14px}
+table.reasons td:nth-child(2){text-align:left;font-size:11.5px;color:var(--muted)}
+table.reasons tr.dropped td{color:#98A2AE}
+table.reasons tr.sub td{background:#F2F4F7;font-weight:600}
+.flag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  padding:1px 6px;border:1px solid var(--rule);color:var(--muted)}
+.flag.keep{border-color:var(--indigo);color:var(--indigo)}
+.miniwrap{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.mini{width:64px;height:7px;background:#E4E8ED;flex:0 0 auto}
+.mini i{display:block;height:100%;background:var(--indigo)}
+tr.dropped .mini i{background:#B9C1CB}
+
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.q{background:var(--surface);padding:20px}
+.q p{margin:0;font-size:14.5px;line-height:1.65}
+.q .meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:12px}
+.q .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  padding:2px 7px;color:#fff;margin-bottom:12px}
+
+.layers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.ly{background:var(--surface);padding:22px 20px}
+.ly .lv{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--muted)}
+.ly h3{margin:12px 0 8px}
+.ly p{margin:0;font-size:14px;color:var(--muted);line-height:1.7}
+
+table.todo{width:100%;border-collapse:collapse;background:var(--surface);
+  border:1px solid var(--rule);font-size:14px}
+table.todo th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:12px 14px;border-bottom:1px solid var(--rule);font-weight:500}
+table.todo td{padding:13px 14px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.6}
+table.todo tr:last-child td{border-bottom:none}
+table.todo td.own{font-family:var(--mono);font-size:12px;white-space:nowrap}
+.pill{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  padding:2px 7px;color:#fff}
+@media(max-width:640px){
+  table.todo,table.todo tbody,table.todo tr,table.todo td{display:block;width:100%}
+  table.todo thead{display:none}
+  table.todo tr{border-bottom:1px solid var(--rule);padding:6px 0}
+  table.todo td{border:none;padding:4px 14px}
+}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{font-family:var(--mono);font-size:12px;padding:6px 13px;background:transparent;
+  border:1px solid var(--rule);color:var(--muted);cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--indigo);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.chip:focus-visible,.nodehit:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+#vcount{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:12px}
+.vlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.vcard{background:var(--surface);padding:16px 18px}
+.vcard .head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:9px}
+.vcard .idx{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.vcard .txt{font-size:14px;line-height:1.6}
+.vcard .tags{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6}
+
+footer{background:var(--indigo);color:#A9B8CE;padding:44px 0 52px;font-size:13.5px;line-height:1.75}
+footer h3{color:#EEF1F5;font-size:15px;margin-bottom:10px}
+footer .grid2{gap:36px}
+footer ul{margin:0;padding-left:18px}
+footer li{margin-bottom:7px}
+footer .sig-line{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.16);
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#7F91AC}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* —— 通用版新增：逐项看两头 / 严重档构成 / 行动档位 —— */
+.triage{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.dual{display:grid;grid-template-columns:150px 1fr 150px;gap:12px;align-items:center;padding:7px 0;font-size:13.5px}
+.dual .bar{display:flex;height:16px;background:#E4E8ED;font-family:var(--mono);font-size:10.5px;color:#fff;overflow:hidden}
+.dual .bar i{display:flex;align-items:center;justify-content:center;font-style:normal;white-space:nowrap}
+.dual .bar .a{background:#1C2C4A}.dual .bar .b{background:#8792A3}
+.dual .verdict{font-family:var(--mono);font-size:11px;text-align:right}
+@media(max-width:620px){.dual{grid-template-columns:96px 1fr;}.dual .verdict{grid-column:1/-1;text-align:left;margin-top:-4px}}
+.sevrow{display:grid;grid-template-columns:150px 1fr 130px;gap:12px;align-items:center;padding:5px 0;font-size:13.5px}
+.sevrow .track{height:12px;background:#E4E8ED;position:relative}
+.sevrow .track .all{position:absolute;left:0;top:0;height:100%;background:#B9C1CB}
+.sevrow .track .hot{position:absolute;left:0;top:0;height:100%;background:#A93B32}
+.sevrow .v{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
+.tier{display:block;font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:6px;letter-spacing:.06em}
+.kpi5{font-size:12.5px;line-height:1.65;white-space:normal!important;font-family:var(--sans)!important}
+.kpi5 b{font-weight:600}.kpi5 .ifnot{display:block;margin-top:4px;color:#A93B32}
+.sample-flag{display:inline-block;margin-left:10px;padding:1px 8px;border:1px solid #F0C46A;color:#F0C46A;font-family:var(--mono);font-size:11px;letter-spacing:.08em}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <div class="eyebrow" id="m-eyebrow"></div>
+    <h1 id="m-headline"></h1>
+    <div class="subject" id="m-subject"></div>
+    <div class="funnel" id="funnel"></div>
+  </div>
+</header>
+<div class="wrap" id="main"></div>
+<footer><div class="wrap">
+  <div class="grid2">
+    <div><h3>口径</h3><ul id="f-scope"></ul></div>
+    <div><h3>这批数据答不了什么</h3><ul id="f-caveats"></ul></div>
+  </div>
+  <div class="sig-line" id="f-sig"></div>
+</div></footer>
+
+<script>
+const P = {"product": "A款-防滑鼻托套装(2对装)", "is_sample": true, "stats": {"n": 94, "gate": 3, "l1": {"高度与贴合": 43, "兼容与收纳": 15, "防滑与固定": 12, "综合质量": 11, "材质与做工": 7, "非产品因素": 6}, "tags": {"整体高度": 31, "宽度与覆盖": 9, "与预期(泛指)": 6, "背胶牢固度": 6, "选档指引": 6, "发货准确": 5, "合适度(没说方向)": 5, "防滑效果(泛指)": 5, "充电盒收纳": 5, "机型适配": 5, "硅胶软硬": 4, "兼容宣称兑现度": 3, "摄像头视角": 3, "贴片式形态(这一款特有)": 3, "装上后充电": 3, "防滑宣称兑现度": 2, "质量(泛指)": 2, "颜色与图片一致": 2, "出汗时防滑": 2, "耐黄变": 1, "值不值": 1, "撕下后留胶": 1, "边缘做工": 1, "同款批次一致性": 1, "重复下单": 1, "充电盒相关(没说清)": 1, "新旧状态": 1}, "tags_full": {"整体高度:偏矮": 16, "整体高度:偏高": 15, "宽度与覆盖:偏宽": 9, "与预期(泛指)": 6, "选档指引": 6, "背胶牢固度": 6, "充电盒收纳": 5, "发货准确": 5, "防滑效果(泛指)": 5, "机型适配": 5, "合适度(没说方向)": 5, "贴片式形态(这一款特有)": 3, "摄像头视角": 3, "兼容宣称兑现度": 3, "装上后充电": 3, "硅胶软硬:偏硬": 3, "质量(泛指)": 2, "颜色与图片一致": 2, "防滑宣称兑现度": 2, "出汗时防滑": 2, "撕下后留胶": 1, "耐黄变": 1, "充电盒相关(没说清)": 1, "重复下单": 1, "新旧状态": 1, "值不值": 1, "边缘做工": 1, "同款批次一致性": 1, "硅胶软硬:偏软": 1}, "tags_in": {"整体高度": 31, "宽度与覆盖": 9, "与预期(泛指)": 6, "背胶牢固度": 6, "选档指引": 6, "发货准确": 5, "合适度(没说方向)": 5, "防滑效果(泛指)": 5, "充电盒收纳": 5, "机型适配": 5, "硅胶软硬": 4, "兼容宣称兑现度": 3, "摄像头视角": 3, "贴片式形态(这一款特有)": 3, "装上后充电": 3}, "attr": {"产品的事": 34, "说不清": 31, "页面的事": 14, "客户自己选错": 7, "不该买这款": 4, "其他": 4}, "sev": {"中度": 62, "轻度": 20, "严重": 12}, "sev_total": 12, "sev_by_l1": [{"l1": "高度与贴合", "n": 43, "hot": 1, "占全部严重": 0.083}, {"l1": "防滑与固定", "n": 12, "hot": 10, "占全部严重": 0.833}, {"l1": "兼容与收纳", "n": 15, "hot": 0, "占全部严重": 0.0}, {"l1": "佩戴与外观", "n": 0, "hot": 0, "占全部严重": 0.0}, {"l1": "材质与做工", "n": 7, "hot": 0, "占全部严重": 0.0}, {"l1": "综合质量", "n": 11, "hot": 1, "占全部严重": 0.083}, {"l1": "非产品因素", "n": 6, "hot": 0, "占全部严重": 0.0}], "save": 9, "reason": {"NOT_AS_DESCRIBED": 38, "DEFECTIVE": 18, "QUALITY_UNACCEPTABLE": 15, "NOT_COMPATIBLE": 15, "ORDERED_WRONG_ITEM": 6, "MISORDERED": 2}, "spec": {"标准款-2.5mm": 35, "标准款-1.8mm": 27, "大号款-2.5mm": 18, "大号款-1.8mm": 14}, "month": {"2026-01": 14, "2026-02": 17, "2026-03": 11, "2026-04": 2, "2026-05": 11, "2026-06": 12, "2026-07": 19, "2026-08": 8}, "user": {"照页面指引选的": 6, "计划换档": 5, "已换档复购": 4, "原装鼻托": 2, "长期佩戴": 1, "代买(父母)": 1, "代买(伴侣)": 1}, "scene": {"放回充电盒时": 9, "运动出汗": 3, "第一次用就出问题": 2, "全天佩戴": 1, "重复下单": 1}, "exp": {"外观体面度": 8, "佩戴舒适度": 4, "收货第一印象": 4, "安心感(夸)": 1, "佩戴舒适度(夸)": 1, "使用者拒绝佩戴": 1}, "links": [{"r": "DEFECTIVE", "a": "产品的事", "v": 12}, {"r": "DEFECTIVE", "a": "说不清", "v": 6}, {"r": "MISORDERED", "a": "客户自己选错", "v": 2}, {"r": "NOT_AS_DESCRIBED", "a": "不该买这款", "v": 4}, {"r": "NOT_AS_DESCRIBED", "a": "产品的事", "v": 6}, {"r": "NOT_AS_DESCRIBED", "a": "其他", "v": 2}, {"r": "NOT_AS_DESCRIBED", "a": "说不清", "v": 13}, {"r": "NOT_AS_DESCRIBED", "a": "页面的事", "v": 13}, {"r": "NOT_COMPATIBLE", "a": "产品的事", "v": 7}, {"r": "NOT_COMPATIBLE", "a": "其他", "v": 2}, {"r": "NOT_COMPATIBLE", "a": "客户自己选错", "v": 1}, {"r": "NOT_COMPATIBLE", "a": "说不清", "v": 4}, {"r": "NOT_COMPATIBLE", "a": "页面的事", "v": 1}, {"r": "ORDERED_WRONG_ITEM", "a": "客户自己选错", "v": 4}, {"r": "ORDERED_WRONG_ITEM", "a": "说不清", "v": 2}, {"r": "QUALITY_UNACCEPTABLE", "a": "产品的事", "v": 9}, {"r": "QUALITY_UNACCEPTABLE", "a": "说不清", "v": 6}], "sym_overall": [{"可判定": true, "一头": "偏高", "另一头": "偏矮", "一头条数": 15, "另一头条数": 16, "合计": 31, "一头占比": 48.4, "另一头占比": 51.6, "差距": 3.2, "偏向": "偏矮", "判定": "正常", "含义": "两头基本对半，属于个人差异，那张规格表别动；但要到下一层再量一遍", "属性": "整体高度"}], "sym_items": [{"细项": "宽度与覆盖", "一头": "偏宽", "另一头": "偏窄", "一头条数": 9, "另一头条数": 0, "合计": 9, "一头占比": 100.0, "另一头占比": 0.0, "差距": 100.0, "判定": "一边倒"}, {"细项": "硅胶软硬", "一头": "偏硬", "另一头": "偏软", "一头条数": 3, "另一头条数": 1, "合计": 4, "一头占比": 75.0, "另一头占比": 25.0, "差距": 50.0, "判定": "样本少"}], "rvv": {}, "tag_by_reason": {"整体高度": {"NOT_AS_DESCRIBED": 14, "DEFECTIVE": 8, "ORDERED_WRONG_ITEM": 5, "QUALITY_UNACCEPTABLE": 4}, "宽度与覆盖": {"NOT_AS_DESCRIBED": 6, "QUALITY_UNACCEPTABLE": 2, "DEFECTIVE": 1}, "与预期(泛指)": {"NOT_AS_DESCRIBED": 6}, "背胶牢固度": {"DEFECTIVE": 4, "NOT_AS_DESCRIBED": 2}, "选档指引": {"NOT_AS_DESCRIBED": 6}, "发货准确": {"NOT_AS_DESCRIBED": 3, "NOT_COMPATIBLE": 2}, "合适度(没说方向)": {"NOT_AS_DESCRIBED": 3, "MISORDERED": 1, "NOT_COMPATIBLE": 1}, "防滑效果(泛指)": {"DEFECTIVE": 5}, "充电盒收纳": {"NOT_COMPATIBLE": 3, "NOT_AS_DESCRIBED": 2}, "机型适配": {"NOT_COMPATIBLE": 4, "ORDERED_WRONG_ITEM": 1}, "硅胶软硬": {"QUALITY_UNACCEPTABLE": 4}, "兼容宣称兑现度": {"NOT_AS_DESCRIBED": 2, "NOT_COMPATIBLE": 1}, "摄像头视角": {"NOT_AS_DESCRIBED": 1, "NOT_COMPATIBLE": 1, "DEFECTIVE": 1}, "贴片式形态(这一款特有)": {"NOT_AS_DESCRIBED": 3}, "装上后充电": {"NOT_COMPATIBLE": 3}}, "tag_by_spec": {"整体高度": {"标准款-2.5mm": {"这一项里占": 0.355, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.323, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.161, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.161, "大盘里占": 0.149}}, "宽度与覆盖": {"标准款-2.5mm": {"这一项里占": 0.333, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.222, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.222, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.222, "大盘里占": 0.149}}, "与预期(泛指)": {"标准款-2.5mm": {"这一项里占": 0.5, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.333, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.167, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0, "大盘里占": 0.149}}, "背胶牢固度": {"标准款-2.5mm": {"这一项里占": 0.5, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.167, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.167, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.167, "大盘里占": 0.149}}, "选档指引": {"标准款-2.5mm": {"这一项里占": 0.5, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.5, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0, "大盘里占": 0.149}}, "发货准确": {"标准款-2.5mm": {"这一项里占": 0.4, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.2, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.2, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.2, "大盘里占": 0.149}}, "合适度(没说方向)": {"标准款-2.5mm": {"这一项里占": 0.2, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.2, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.4, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.2, "大盘里占": 0.149}}, "防滑效果(泛指)": {"标准款-2.5mm": {"这一项里占": 0.4, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.4, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.2, "大盘里占": 0.149}}, "充电盒收纳": {"标准款-2.5mm": {"这一项里占": 0.6, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.4, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0, "大盘里占": 0.149}}, "机型适配": {"标准款-2.5mm": {"这一项里占": 0, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.6, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.2, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.2, "大盘里占": 0.149}}, "硅胶软硬": {"标准款-2.5mm": {"这一项里占": 0.5, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.25, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.25, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0, "大盘里占": 0.149}}, "兼容宣称兑现度": {"标准款-2.5mm": {"这一项里占": 0.333, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.333, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.333, "大盘里占": 0.149}}, "摄像头视角": {"标准款-2.5mm": {"这一项里占": 1.0, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0, "大盘里占": 0.149}}, "贴片式形态(这一款特有)": {"标准款-2.5mm": {"这一项里占": 0, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.667, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0.333, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0, "大盘里占": 0.149}}, "装上后充电": {"标准款-2.5mm": {"这一项里占": 0.333, "大盘里占": 0.372}, "标准款-1.8mm": {"这一项里占": 0.333, "大盘里占": 0.287}, "大号款-2.5mm": {"这一项里占": 0, "大盘里占": 0.191}, "大号款-1.8mm": {"这一项里占": 0.333, "大盘里占": 0.149}}}, "basket": {"NOT_AS_DESCRIBED": {"高度与贴合": 23, "综合质量": 6, "非产品因素": 3, "防滑与固定": 2, "材质与做工": 2, "兼容与收纳": 2}, "NOT_COMPATIBLE": {"兼容与收纳": 12, "非产品因素": 2, "高度与贴合": 1}}, "prep": {"品类": "AI 眼镜配件", "配置版本": "v0.2", "文件编码": "utf-8-sig", "原始行数": 371, "退货行数": 357, "本次范围": {"产品": "A款-防滑鼻托套装(2对装)", "站点": "全部", "行数": 357}, "口径": {"退货明细行": 357, "退货订单": 332}, "留剔": {"留": 283, "剔": 74, "剔的构成": {"客户改主意": 40, "物流": 19, "没给原因": 15}, "剔掉的码有几类": 10}, "原话": {"范围内写了字的": 101, "覆盖率": 0.283, "只有平台套话被剔掉": 7, "留下且有原话": 94}, "原因码分布": {"NOT_AS_DESCRIBED": 89, "NOT_COMPATIBLE": 64, "DEFECTIVE": 61, "QUALITY_UNACCEPTABLE": 38, "UNWANTED_ITEM": 29, "ORDERED_WRONG_ITEM": 22, "NO_REASON_GIVEN": 15, "MISORDERED": 9, "FOUND_BETTER_PRICE": 7, "DAMAGED_BY_FC": 7, "UNAUTHORIZED_PURCHASE": 4, "UNDELIVERABLE_UNKNOWN": 4, "MISSED_ESTIMATED_DELIVERY": 2, "DAMAGED_BY_CARRIER": 2, "SWITCHEROO": 2, "MISSING_PARTS": 2}, "原因码占比": {"NOT_AS_DESCRIBED": 0.2493, "NOT_COMPATIBLE": 0.1793, "DEFECTIVE": 0.1709, "QUALITY_UNACCEPTABLE": 0.1064, "UNWANTED_ITEM": 0.0812, "ORDERED_WRONG_ITEM": 0.0616, "NO_REASON_GIVEN": 0.042, "MISORDERED": 0.0252, "FOUND_BETTER_PRICE": 0.0196, "DAMAGED_BY_FC": 0.0196, "UNAUTHORIZED_PURCHASE": 0.0112, "UNDELIVERABLE_UNKNOWN": 0.0112, "MISSED_ESTIMATED_DELIVERY": 0.0056, "DAMAGED_BY_CARRIER": 0.0056, "SWITCHEROO": 0.0056, "MISSING_PARTS": 0.0056}, "原因码中文": {"NOT_AS_DESCRIBED": "与描述不符", "DEFECTIVE": "有缺陷", "QUALITY_UNACCEPTABLE": "质量不满意", "NOT_COMPATIBLE": "不兼容", "ORDERED_WRONG_ITEM": "买家选错商品", "MISORDERED": "下错单", "DAMAGED_BY_FC": "运营中心损坏", "DAMAGED_BY_CARRIER": "承运商损坏", "MISSED_ESTIMATED_DELIVERY": "错过预计送达", "MISSING_PARTS": "缺少部件", "SWITCHEROO": "疑似调包", "UNDELIVERABLE_UNKNOWN": "无法投递", "NEVER_ARRIVED": "从未送达", "EXTRA_ITEM": "多发商品", "UNWANTED_ITEM": "不再需要", "FOUND_BETTER_PRICE": "找到更便宜的", "UNAUTHORIZED_PURCHASE": "未经授权购买", "NO_REASON_GIVEN": "未提供原因"}, "留下的码": ["DEFECTIVE", "MISORDERED", "NOT_AS_DESCRIBED", "NOT_COMPATIBLE", "ORDERED_WRONG_ITEM", "QUALITY_UNACCEPTABLE"], "大筐": ["NOT_AS_DESCRIBED", "NOT_COMPATIBLE"], "两头对称_原因码层": [{"可判定": false, "合计": 0, "原因": "这个品类的平台原因码里没有方向信息，只能在原话那一层看", "属性": "整体高度"}], "站点分布": {"US": 92, "DE": 2}, "规格分布": {"标准款-2.5mm": 35, "标准款-1.8mm": 27, "大号款-2.5mm": 18, "大号款-1.8mm": 14}, "属性分布": {"适配机型": {"标准款": 62, "大号款": 32}, "高度档": {"2.5mm": 53, "1.8mm": 41}}, "时间跨度": ["2026-01", "2026-08"], "提醒": {"编码损坏": "原话里出现 2 处字面的 '??'。非英文字符在导出时就丢了，救不回来。要求重新导出为 UTF-8，不要拿坏掉的原话去打标。"}}}, "records": [{"序号": "1", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-01-26", "月份": "2026-01", "平台原因码": "NOT_AS_DESCRIBED", "原话": "followed the size recommendation on the page, 2.5 is too high for me", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高; 选档指引", "谁在说": "照页面指引选的", "什么情况下": "", "过程感受": "", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "2", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-06-08", "月份": "2026-06", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "not worth the price for four bits of silicone", "哪件事_大类": "综合质量", "哪件事_细项": "值不值", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "3", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-08-23", "月份": "2026-08", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "second order from the same listing. These pads are noticeably harder than my first set", "哪件事_大类": "综合质量", "哪件事_细项": "同款批次一致性; 硅胶软硬:偏硬", "谁在说": "长期佩戴", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "4", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-01-29", "月份": "2026-01", "平台原因码": "DEFECTIVE", "原话": "not good", "哪件事_大类": "综合质量", "哪件事_细项": "质量(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "5", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-02-06", "月份": "2026-02", "平台原因码": "NOT_AS_DESCRIBED", "原话": "fit", "哪件事_大类": "高度与贴合", "哪件事_细项": "合适度(没说方向)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "6", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-02-22", "月份": "2026-02", "平台原因码": "NOT_AS_DESCRIBED", "原话": "Listing says sweat proof adhesive. Came off after one gym session", "哪件事_大类": "防滑与固定", "哪件事_细项": "背胶牢固度; 防滑宣称兑现度", "谁在说": "", "什么情况下": "运动出汗", "过程感受": "", "该谁改": "页面的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "7", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-03-31", "月份": "2026-03", "平台原因码": "DEFECTIVE", "原话": "Sits too high. Took them off after an hour", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "", "什么情况下": "", "过程感受": "佩戴舒适度", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "8", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-01-07", "月份": "2026-01", "平台原因码": "NOT_AS_DESCRIBED", "原话": "very nice idea but I don't want anything glued to my glasses", "哪件事_大类": "综合质量", "哪件事_细项": "贴片式形态(这一款特有); 与预期(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "不该买这款", "多严重": "轻度", "能否挽回": "否"}, {"序号": "9", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-06-08", "月份": "2026-06", "平台原因码": "NOT_AS_DESCRIBED", "原话": "even 2.5 is not enough height for me", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "10", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-03-03", "月份": "2026-03", "平台原因码": "NOT_AS_DESCRIBED", "原话": "page says pick 2.5 if glasses slide. They did stop sliding but now sit too high and the photos are all tilted up", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高; 选档指引; 摄像头视角", "谁在说": "照页面指引选的", "什么情况下": "", "过程感受": "安心感(夸)", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "11", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-01-28", "月份": "2026-01", "平台原因码": "ORDERED_WRONG_ITEM", "原话": "2.5 was too much, swapping for the 1.8", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "计划换档", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "是"}, {"序号": "12", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-02-07", "月份": "2026-02", "平台原因码": "NOT_AS_DESCRIBED", "原话": "The page told me to go 2.5 for a low bridge. Too much lift", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高; 选档指引", "谁在说": "照页面指引选的", "什么情况下": "", "过程感受": "", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "13", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-01-20", "月份": "2026-01", "平台原因码": "DEFECTIVE", "原话": "They don't work for me. Glasses still slide when I run", "哪件事_大类": "防滑与固定", "哪件事_细项": "防滑效果(泛指)", "谁在说": "", "什么情况下": "运动出汗", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "14", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-07-26", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "too high on nose, as recommended size", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高; 选档指引", "谁在说": "照页面指引选的", "什么情况下": "", "过程感受": "", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "15", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-04-26", "月份": "2026-04", "平台原因码": "NOT_AS_DESCRIBED", "原话": "thickness", "哪件事_大类": "高度与贴合", "哪件事_细项": "合适度(没说方向)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "16", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-02-23", "月份": "2026-02", "平台原因码": "NOT_COMPATIBLE", "原话": "not for Skyler model even though title says fits all", "哪件事_大类": "兼容与收纳", "哪件事_细项": "机型适配; 兼容宣称兑现度", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "17", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-02-22", "月份": "2026-02", "平台原因码": "NOT_AS_DESCRIBED", "原话": "didn't fit", "哪件事_大类": "高度与贴合", "哪件事_细项": "合适度(没说方向)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "18", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-05-24", "月份": "2026-05", "平台原因码": "NOT_COMPATIBLE", "原话": "Great idea and really comfortable, but the glasses stopped charging in the case", "哪件事_大类": "兼容与收纳", "哪件事_细项": "装上后充电", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "佩戴舒适度(夸)", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "19", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-05-30", "月份": "2026-05", "平台原因码": "NOT_AS_DESCRIBED", "原话": "color is not what the picture shows", "哪件事_大类": "材质与做工", "哪件事_细项": "颜色与图片一致", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "20", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-07-18", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "pad is wider than the original nose piece, edges stick out and look ugly", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "原装鼻托", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "21", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-06-08", "月份": "2026-06", "平台原因码": "NOT_AS_DESCRIBED", "原话": "Pads are too thick, glasses sit way too high on my face", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "22", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-01-17", "月份": "2026-01", "平台原因码": "NOT_AS_DESCRIBED", "原话": "too short", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "23", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-06-01", "月份": "2026-06", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "too wide for the nose area, sticks out past the frame", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "24", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-03-22", "月份": "2026-03", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "looked like the bag had been opened before, pads had lint on them", "哪件事_大类": "综合质量", "哪件事_细项": "新旧状态", "谁在说": "", "什么情况下": "", "过程感受": "收货第一印象", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "25", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-08-04", "月份": "2026-08", "平台原因码": "NOT_COMPATIBLE", "原话": "does not fit the Headliner frame, nose area is a different shape", "哪件事_大类": "兼容与收纳", "哪件事_细项": "机型适配", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "26", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-03-27", "月份": "2026-03", "平台原因码": "NOT_AS_DESCRIBED", "原话": "too wide, visible from the front, embarrassing in meetings", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "27", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-05-17", "月份": "2026-05", "平台原因码": "NOT_AS_DESCRIBED", "原话": "Says 2 pairs. Got 3 single pads, not even 2 full pairs", "哪件事_大类": "非产品因素", "哪件事_细项": "发货准确", "谁在说": "", "什么情况下": "", "过程感受": "收货第一印象", "该谁改": "其他", "多严重": "中度", "能否挽回": "否"}, {"序号": "28", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-02-19", "月份": "2026-02", "平台原因码": "DEFECTIVE", "原话": "glue fails when I sweat, pads slide around on the frame", "哪件事_大类": "防滑与固定", "哪件事_细项": "出汗时防滑", "谁在说": "", "什么情况下": "运动出汗", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "29", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-08-07", "月份": "2026-08", "平台原因码": "NOT_AS_DESCRIBED", "原话": "not tall enough for a flat nose bridge", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "30", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-07-19", "月份": "2026-07", "平台原因码": "NOT_COMPATIBLE", "原话": "changes the camera angle, every video is aimed too high", "哪件事_大类": "兼容与收纳", "哪件事_细项": "摄像头视角", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "31", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-08-15", "月份": "2026-08", "平台原因码": "DEFECTIVE", "原话": "not enough lift, lashes still hit the lens", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "32", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-07-14", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "listing says 2 pairs, only 1 pair in the bag", "哪件事_大类": "非产品因素", "哪件事_细项": "发货准确", "谁在说": "", "什么情况下": "", "过程感受": "收货第一印象", "该谁改": "其他", "多严重": "中度", "能否挽回": "否"}, {"序号": "33", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-07-17", "月份": "2026-07", "平台原因码": "ORDERED_WRONG_ITEM", "原话": "need thicker. Will order the 2.5", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "计划换档", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "是"}, {"序号": "34", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-06-25", "月份": "2026-06", "平台原因码": "DEFECTIVE", "原话": "adhesive gave out the first time I wore them, one pad is gone", "哪件事_大类": "防滑与固定", "哪件事_细项": "背胶牢固度", "谁在说": "", "什么情况下": "第一次用就出问题", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "35", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-07-02", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "Listing said low nose bridge should pick 2.5mm. I did. Way too tall, frames float above my eyebrows", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高; 选档指引", "谁在说": "照页面指引选的", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "36", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-02-13", "月份": "2026-02", "平台原因码": "NOT_AS_DESCRIBED", "原话": "even the thin one raises the glasses too much for me", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "37", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-01-13", "月份": "2026-01", "平台原因码": "NOT_AS_DESCRIBED", "原话": "thought these were screw in replacement nose pads. These are just stickers", "哪件事_大类": "综合质量", "哪件事_细项": "贴片式形态(这一款特有); 与预期(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "不该买这款", "多严重": "中度", "能否挽回": "否"}, {"序号": "38", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-05-21", "月份": "2026-05", "平台原因码": "DEFECTIVE", "原话": "lifts the frame so much the camera now points at the ceiling", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高; 摄像头视角", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "39", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-08-21", "月份": "2026-08", "平台原因码": "NOT_COMPATIBLE", "原话": "I have the large frame and bought standard. My mistake, reordering the large version", "哪件事_大类": "兼容与收纳", "哪件事_细项": "机型适配", "谁在说": "已换档复购", "什么情况下": "", "过程感受": "", "该谁改": "客户自己选错", "多严重": "轻度", "能否挽回": "是"}, {"序号": "40", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-03-05", "月份": "2026-03", "平台原因码": "NOT_AS_DESCRIBED", "原话": "1.8mm barely makes a difference, glasses still rest on my cheeks", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "41", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-02-05", "月份": "2026-02", "平台原因码": "NOT_COMPATIBLE", "原话": "wrong model for my glasses, ordered the other one", "哪件事_大类": "兼容与收纳", "哪件事_细项": "机型适配", "谁在说": "已换档复购", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "是"}, {"序号": "42", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-03-18", "月份": "2026-03", "平台原因码": "NOT_COMPATIBLE", "原话": "fits in the case but does not charge, the contacts don't touch", "哪件事_大类": "兼容与收纳", "哪件事_细项": "装上后充电", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "43", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-02-04", "月份": "2026-02", "平台原因码": "DEFECTIVE", "原话": "Does not raise the glasses enough. Still sliding by lunch", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮; 防滑效果(泛指)", "谁在说": "", "什么情况下": "全天佩戴", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "44", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-05-18", "月份": "2026-05", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "rough edge on one pad, scratches my skin", "哪件事_大类": "材质与做工", "哪件事_细项": "边缘做工", "谁在说": "", "什么情况下": "", "过程感受": "佩戴舒适度", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "45", "站点": "DE", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-01-24", "月份": "2026-01", "平台原因码": "DEFECTIVE", "原话": "Hält nicht, der Kleber löst sich nach zwei Tagen", "哪件事_大类": "防滑与固定", "哪件事_细项": "背胶牢固度", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "46", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-07-01", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "too thick for my nose, glasses ride up high", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "47", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-07-04", "月份": "2026-07", "平台原因码": "ORDERED_WRONG_ITEM", "原话": "should have ordered the thicker ones, that is on me. Reordered", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "已换档复购", "什么情况下": "", "过程感受": "", "该谁改": "客户自己选错", "多严重": "轻度", "能否挽回": "是"}, {"序号": "48", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-07-20", "月份": "2026-07", "平台原因码": "NOT_COMPATIBLE", "原话": "with pads on, glasses won't seat in the charging case", "哪件事_大类": "兼容与收纳", "哪件事_细项": "充电盒收纳", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "49", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-05-22", "月份": "2026-05", "平台原因码": "DEFECTIVE", "原话": "slides", "哪件事_大类": "防滑与固定", "哪件事_细项": "防滑效果(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "50", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-02-20", "月份": "2026-02", "平台原因码": "NOT_AS_DESCRIBED", "原话": "I wanted something to stop the arms slipping behind my ears. This only does the nose", "哪件事_大类": "综合质量", "哪件事_细项": "与预期(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "不该买这款", "多严重": "中度", "能否挽回": "否"}, {"序号": "51", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-05-05", "月份": "2026-05", "平台原因码": "ORDERED_WRONG_ITEM", "原话": "I picked the thin one, my fault, exchanging for the thicker set", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "计划换档", "什么情况下": "", "过程感受": "", "该谁改": "客户自己选错", "多严重": "轻度", "能否挽回": "是"}, {"序号": "52", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-02-12", "月份": "2026-02", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "Too wide. Had to trim with scissors which defeats the purpose", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "53", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-06-18", "月份": "2026-06", "平台原因码": "MISORDERED", "原话": "ordered 2.5 by mistake, will replace with 1.8", "哪件事_大类": "高度与贴合", "哪件事_细项": "合适度(没说方向)", "谁在说": "计划换档", "什么情况下": "", "过程感受": "", "该谁改": "客户自己选错", "多严重": "轻度", "能否挽回": "是"}, {"序号": "54", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-03-24", "月份": "2026-03", "平台原因码": "NOT_AS_DESCRIBED", "原话": "missing the alcohol wipe and the placement guide shown in the photos", "哪件事_大类": "非产品因素", "哪件事_细项": "发货准确", "谁在说": "", "什么情况下": "", "过程感受": "收货第一印象", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "55", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-01-29", "月份": "2026-01", "平台原因码": "NOT_COMPATIBLE", "原话": "case will not close with these installed", "哪件事_大类": "兼容与收纳", "哪件事_细项": "充电盒收纳", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "56", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-02-19", "月份": "2026-02", "平台原因码": "NOT_AS_DESCRIBED", "原话": "expected a full nose bridge replacement, not stick on pads", "哪件事_大类": "综合质量", "哪件事_细项": "贴片式形态(这一款特有); 与预期(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "不该买这款", "多严重": "中度", "能否挽回": "否"}, {"序号": "57", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-01-14", "月份": "2026-01", "平台原因码": "NOT_COMPATIBLE", "原话": "ordered the large frame version, package label says standard", "哪件事_大类": "非产品因素", "哪件事_细项": "发货准确", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "其他", "多严重": "中度", "能否挽回": "否"}, {"序号": "58", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-05-07", "月份": "2026-05", "平台原因码": "DEFECTIVE", "原话": "sits too tall, bottom of the lens is above my eye line", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "59", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-07-24", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "not what I expected", "哪件事_大类": "综合质量", "哪件事_细项": "与预期(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "60", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-07-18", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "Wider than the built in pad. Looks like I taped something to my glasses", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "原装鼻托", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "61", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-06-16", "月份": "2026-06", "平台原因码": "NOT_AS_DESCRIBED", "原话": "only the 1.8 fits the case. The 2.5 doesn't. Nowhere on the page does it say that", "哪件事_大类": "兼容与收纳", "哪件事_细项": "充电盒收纳; 兼容宣称兑现度", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "62", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-03-06", "月份": "2026-03", "平台原因码": "DEFECTIVE", "原话": "too thin to help, frame still touches my cheeks when I smile", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "63", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-07-05", "月份": "2026-07", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "too thin", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "64", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-05-11", "月份": "2026-05", "平台原因码": "NOT_AS_DESCRIBED", "原话": "overhangs the nose pad on both sides, you can see it from the front", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "65", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-07-01", "月份": "2026-07", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "left sticky residue on my 300 dollar glasses when I peeled it off. Not happy", "哪件事_大类": "防滑与固定", "哪件事_细项": "撕下后留胶", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "66", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-03-16", "月份": "2026-03", "平台原因码": "DEFECTIVE", "原话": "Fell off on day one and my glasses hit the pavement. Lens is scratched. Ridiculous!", "哪件事_大类": "防滑与固定", "哪件事_细项": "背胶牢固度", "谁在说": "", "什么情况下": "第一次用就出问题", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "67", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-02-05", "月份": "2026-02", "平台原因码": "DEFECTIVE", "原话": "needs to be thicker, glasses slip when I look down", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮; 防滑效果(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "68", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-08-19", "月份": "2026-08", "平台原因码": "NOT_AS_DESCRIBED", "原话": "photo shows glasses in the case with pads on. Mine do not fit in the case at all", "哪件事_大类": "兼容与收纳", "哪件事_细项": "充电盒收纳; 兼容宣称兑现度", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "69", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-05-01", "月份": "2026-05", "平台原因码": "DEFECTIVE", "原话": "the pads are too wide, they catch dust on the exposed sticky edge", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "70", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-03-10", "月份": "2026-03", "平台原因码": "NOT_AS_DESCRIBED", "原话": "pads bigger than the nose rest so the glue edge shows", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "71", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-07-23", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "bought for my dad, he says it feels weird and refuses to wear them", "哪件事_大类": "综合质量", "哪件事_细项": "与预期(泛指)", "谁在说": "代买(父母)", "什么情况下": "", "过程感受": "使用者拒绝佩戴; 佩戴舒适度", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "72", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-02-04", "月份": "2026-02", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "too tall, pushes lenses away from my eyes", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "73", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-06-23", "月份": "2026-06", "平台原因码": "ORDERED_WRONG_ITEM", "原话": "My bad, should have gotten the 1.8. Already reordered the thinner ones and they are fine", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高", "谁在说": "已换档复购", "什么情况下": "", "过程感受": "", "该谁改": "客户自己选错", "多严重": "轻度", "能否挽回": "是"}, {"序号": "74", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-01-12", "月份": "2026-01", "平台原因码": "NOT_AS_DESCRIBED", "原话": "pictured crystal clear, arrived cloudy white. Very visible on black frames", "哪件事_大类": "材质与做工", "哪件事_细项": "颜色与图片一致", "谁在说": "", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "75", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-07-31", "月份": "2026-07", "平台原因码": "DEFECTIVE", "原话": "still slips down my nose in hot weather", "哪件事_大类": "防滑与固定", "哪件事_细项": "出汗时防滑", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "76", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-07-30", "月份": "2026-07", "平台原因码": "DEFECTIVE", "原话": "still slides down, not thick enough", "哪件事_大类": "防滑与固定", "哪件事_细项": "防滑效果(泛指); 整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "77", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-06-02", "月份": "2026-06", "平台原因码": "MISORDERED", "原话": "ordered twice by accident", "哪件事_大类": "非产品因素", "哪件事_细项": "重复下单", "谁在说": "", "什么情况下": "重复下单", "过程感受": "", "该谁改": "客户自己选错", "多严重": "轻度", "能否挽回": "否"}, {"序号": "78", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-06-22", "月份": "2026-06", "平台原因码": "ORDERED_WRONG_ITEM", "原话": "gift for my husband, he has the large frames so these don't fit. Getting the right ones", "哪件事_大类": "兼容与收纳", "哪件事_细项": "机型适配", "谁在说": "代买(伴侣); 计划换档", "什么情况下": "", "过程感受": "", "该谁改": "客户自己选错", "多严重": "轻度", "能否挽回": "是"}, {"序号": "79", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-02-11", "月份": "2026-02", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "cheap", "哪件事_大类": "综合质量", "哪件事_细项": "质量(泛指)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "80", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-03-25", "月份": "2026-03", "平台原因码": "NOT_COMPATIBLE", "原话": "case", "哪件事_大类": "兼容与收纳", "哪件事_细项": "充电盒相关(没说清)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "81", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-07-14", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "thinner than I hoped, no change in how the glasses sit", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "82", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-05-27", "月份": "2026-05", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "silicone is hard, leaves red marks on my nose after an hour", "哪件事_大类": "材质与做工", "哪件事_细项": "硅胶软硬:偏硬", "谁在说": "", "什么情况下": "", "过程感受": "佩戴舒适度", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "83", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-06-13", "月份": "2026-06", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "much stiffer than I expected, not soft at all", "哪件事_大类": "材质与做工", "哪件事_细项": "硅胶软硬:偏硬", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}, {"序号": "84", "站点": "DE", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-02-23", "月份": "2026-02", "平台原因码": "NOT_COMPATIBLE", "原话": "Passt nicht ins Ladeetui, zu gro?? f??r das Etui", "哪件事_大类": "兼容与收纳", "哪件事_细项": "充电盒收纳", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "85", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-01-25", "月份": "2026-01", "平台原因码": "NOT_COMPATIBLE", "原话": "have to press the glasses down hard to get the charge light on", "哪件事_大类": "兼容与收纳", "哪件事_细项": "装上后充电", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "86", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-07-21", "月份": "2026-07", "平台原因码": "NOT_AS_DESCRIBED", "原话": "Too thick. Went by the chart for low bridge. Glasses look like they are hovering", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏高; 选档指引", "谁在说": "照页面指引选的", "什么情况下": "", "过程感受": "外观体面度", "该谁改": "页面的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "87", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-02-16", "月份": "2026-02", "平台原因码": "NOT_COMPATIBLE", "原话": "received 2.5 but I ordered 1.8, bag was mislabeled", "哪件事_大类": "非产品因素", "哪件事_细项": "发货准确", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "其他", "多严重": "中度", "能否挽回": "否"}, {"序号": "88", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-2.5mm", "适配机型": "大号款", "高度档": "2.5mm", "日期": "2026-08-07", "月份": "2026-08", "平台原因码": "DEFECTIVE", "原话": "pad came off inside the charging case and now it is stuck in there", "哪件事_大类": "防滑与固定", "哪件事_细项": "背胶牢固度", "谁在说": "", "什么情况下": "放回充电盒时", "过程感受": "", "该谁改": "产品的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "89", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-04-12", "月份": "2026-04", "平台原因码": "NOT_AS_DESCRIBED", "原话": "width is off, hangs over the edge", "哪件事_大类": "高度与贴合", "哪件事_细项": "宽度与覆盖:偏宽", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "90", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-01-15", "月份": "2026-01", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "turned yellow within two weeks", "哪件事_大类": "材质与做工", "哪件事_细项": "耐黄变", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "91", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-08-21", "月份": "2026-08", "平台原因码": "NOT_COMPATIBLE", "原话": "doesn't fit", "哪件事_大类": "高度与贴合", "哪件事_细项": "合适度(没说方向)", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "轻度", "能否挽回": "否"}, {"序号": "92", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-2.5mm", "适配机型": "标准款", "高度档": "2.5mm", "日期": "2026-07-10", "月份": "2026-07", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "too squishy, compresses flat so no lift left", "哪件事_大类": "材质与做工", "哪件事_细项": "硅胶软硬:偏软; 整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "产品的事", "多严重": "中度", "能否挽回": "否"}, {"序号": "93", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "大号款-1.8mm", "适配机型": "大号款", "高度档": "1.8mm", "日期": "2026-01-05", "月份": "2026-01", "平台原因码": "NOT_AS_DESCRIBED", "原话": "says stays on for months, mine lasted two days", "哪件事_大类": "防滑与固定", "哪件事_细项": "背胶牢固度; 防滑宣称兑现度", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "页面的事", "多严重": "严重", "能否挽回": "否"}, {"序号": "94", "站点": "US", "品名": "智能眼镜 硅胶防滑鼻托 背胶款 2对装", "产品": "A款-防滑鼻托套装(2对装)", "规格": "标准款-1.8mm", "适配机型": "标准款", "高度档": "1.8mm", "日期": "2026-06-16", "月份": "2026-06", "平台原因码": "QUALITY_UNACCEPTABLE", "原话": "too low, no real lift", "哪件事_大类": "高度与贴合", "哪件事_细项": "整体高度:偏矮", "谁在说": "", "什么情况下": "", "过程感受": "", "该谁改": "说不清", "多严重": "中度", "能否挽回": "否"}], "insights": {"product": "A款-防滑鼻托套装(2对装)", "eyebrow": "退货分诊 · 美国站为主 · 2026.01–08", "headline": "高度没做偏 —— 做偏的是<em>宽度<\/em>，和页面上那句选档建议", "subtitle": "A款-防滑鼻托套装 · 2 对装 · 标准款 / 大号款 × 1.8mm / 2.5mm · 357 笔退货 / 332 单 / 94 条有原话", "scope_lede": "357 笔退货里，剔掉物流、客户改主意、没给原因这 10 类之后剩 283 笔，其中 94 笔留下了客户自己写的话（另有 7 笔只有平台的下拉选项，客户一个字没写，已去掉）。<b>后面所有比例的分母都是这 94 条，不是 357。<\/b>", "sym_lede": "垫高这件事，嫌高和嫌矮的人一定同时存在，每个人鼻梁不一样。整体看：嫌高 15、嫌矮 16，几乎对半，<b>1.8 / 2.5 这张高度档位表不用动<\/b>。但这个结论只对「整体高度」成立。把同一把尺子拿到下一层再量，宽度这一项完全是另一个样子。", "sankey_lede": "「与描述不符」这个码下面有 38 条原话，读完之后散进了 6 个不同的大类：高度、综合质量、发货准确、防滑、材质、兼容。把它整类当成「页面问题」处理，会同时漏掉一个做宽了的产品缺陷和 3 笔少发货。「不兼容」也一样：15 条里有 2 条其实是仓库发错了型号。", "triage_lede": "产品的事 34 条，页面的事 14 条。页面那 14 条几乎不花钱、当周就能动。另有 31 条（三分之一）说不清该谁改——不是没读懂，是客户只写了「fit」「case」「too thin」这样的残句，没给任何线索。按规矩，没有线索一律判「说不清」，不替客户猜。", "pain_note": "「整体高度」31 条看起来最大，但它两头对称，属于个人差异，不是最该动的。真正该看的是它下面那几项：宽度 9 条全是一个方向；「选档指引」6 条全部指向页面上同一句话。", "sections": [{"eyebrow": "最大的那件事 · 拆到下一层", "title": "高度是两头的，宽度是一头的 —— 这两件事要分开处理", "lede": "整体高度 31 条，嫌高 15、嫌矮 16，是个人差异。宽度与覆盖 9 条，<b>9 条全说太宽，没有一条说太窄<\/b>。两个方向都有人说，是个人差异；全在一个方向，是这一项做偏了。", "bars": [["整体高度（两头都有 · 正常）", 31], ["宽度与覆盖（9 条全说太宽）", 9], ["合适度（没说方向）", 5], ["硅胶软硬（3 硬 1 软 · 样本少）", 4]], "quotes": [{"tag": "太宽", "attr": "产品的事", "text": "pad is wider than the original nose piece, edges stick out and look ugly", "cite": "标准款-1.8mm · 与描述不符"}, {"tag": "太宽", "attr": "产品的事", "text": "too wide, visible from the front, embarrassing in meetings", "cite": "大号款-2.5mm · 与描述不符 · 严重"}, {"tag": "太宽", "attr": "产品的事", "text": "Too wide. Had to trim with scissors which defeats the purpose", "cite": "标准款-2.5mm · 质量不满意"}], "body": "这 9 条在四个规格里的分布和大盘基本一致（标准款-2.5mm 占 33%，大盘 37%；大号款两档合计 44%，大盘 34%）——<b>不是哪个规格做偏了，是整条线都宽<\/b>。而且它在平台字段里是隐形的：9 条里 6 条被记成「与描述不符」、2 条「质量不满意」、1 条「有缺陷」，只看原因码永远看不到。这一款当初特意比原装鼻托做宽一圈，是想让人好贴；客户看到的是胶边露出来、从正面看得见。<b>卖点同时也是漏点。<\/b>"}, {"eyebrow": "不花钱就能改 · 页面的事", "title": "页面那句「低鼻梁选 2.5mm」，正在单方向制造退货", "lede": "页面的事 14 条里，最集中的是选档建议：6 条，全部来自嫌高的那一头。嫌高的 15 条里有 6 条明说自己是照页面建议选的。而实测高度两头对称，并不存在「普遍偏矮、需要往厚了选」这回事。", "bars": [["选档指引", 6], ["兼容宣称兑现度", 3], ["防滑宣称兑现度", 2], ["颜色与图片一致", 2], ["图里有、包里没有", 1]], "quotes": [{"tag": "照建议选的", "attr": "页面的事", "text": "Listing said low nose bridge should pick 2.5mm. I did. Way too tall, frames float above my eyebrows", "cite": "标准款-2.5mm · 与描述不符"}, {"tag": "照建议选的", "attr": "页面的事", "text": "page says pick 2.5 if glasses slide. They did stop sliding but now sit too high and the photos are all tilted up", "cite": "标准款-2.5mm · 与描述不符"}, {"tag": "页面没说", "attr": "页面的事", "text": "only the 1.8 fits the case. The 2.5 doesn't. Nowhere on the page does it say that", "cite": "标准款-2.5mm · 与描述不符"}], "body": "这句建议每生效一次，就多一笔「太高」的退货。改掉它不花钱、当周能做。第二件同样不花钱：<b>「充电盒收纳」这一项 5 条（全是放不回去）全部出在 2.5mm 这一档，1.8mm 一条都没有<\/b>（2.5mm 在大盘里只占 56%）。这是一个规格的事，不是整条线的事——页面上写的「装上还能放回充电盒」，只对 1.8mm 成立，却没有分档说明。"}, {"eyebrow": "量小但严重 · 防滑与固定", "title": "只有 12 条，但 10 条是「严重」—— 它不影响退货量，影响星级", "lede": "防滑类只占有原话退货的 13%，在排名上远不如高度显眼。但全样本 12 条「严重」里，它一类就占了 10 条。对这个品类，背胶脱落不是「不满意」，是一副几百美元的眼镜掉在地上。", "quotes": [{"tag": "第一次用就掉", "attr": "产品的事", "text": "Fell off on day one and my glasses hit the pavement. Lens is scratched. Ridiculous!", "cite": "标准款-2.5mm · 有缺陷 · 严重"}, {"tag": "留胶", "attr": "产品的事", "text": "left sticky residue on my 300 dollar glasses when I peeled it off. Not happy", "cite": "标准款-1.8mm · 质量不满意 · 严重"}, {"tag": "宣称没兑现", "attr": "页面的事", "text": "Listing says sweat proof adhesive. Came off after one gym session", "cite": "标准款-2.5mm · 与描述不符 · 严重"}], "body": "12 条里 10 条判「产品的事」（背胶确实没粘住），2 条判「页面的事」（客户拿的是页面上「防汗」「能用几个月」这两句话当参照）。同一个现象、两种判法：前者要换背胶，后者先把宣称收回来。背胶牢固度这一项 6 条里有 4 条出在 2.5mm（这一档在大盘里占 56%），垫得越高、背胶受的力越大，这一点值得工程上单独验一次。"}, {"eyebrow": "被平台字段盖住的 · 发货", "title": "5 笔少发、错发，没有一笔被平台记成物流问题", "lede": "「写着 2 对只到了 1 对」「买的大号款、包装上贴的是标准款」「买 1.8 收到 2.5」。这 5 条分别落在「与描述不符」（3 条）和「不兼容」（2 条）下面，在任何只看原因码的报表上，都会被算成页面问题或适配问题。", "quotes": [{"tag": "少发", "attr": "其他", "text": "listing says 2 pairs, only 1 pair in the bag", "cite": "标准款-1.8mm · 与描述不符"}, {"tag": "错发", "attr": "其他", "text": "received 2.5 but I ordered 1.8, bag was mislabeled", "cite": "大号款-1.8mm · 不兼容"}], "body": "量不大（5 条，占 5%），但它是纯损耗：产品没问题、页面没问题、客户也没选错，是分装或贴标环节丢的钱，而且每一笔都在污染别的分类的数字。"}, {"eyebrow": "能挽回的 · 客服那边的钱", "title": "9 笔退货的客户还想要这件东西，只是要换一档", "lede": "9 条（占 9.6%）原话里出现了已经重新下单、或明确说要换。这些不是流失，是选档引导没做好多付的一趟运费。", "quotes": [{"tag": "已重新下单", "attr": "客户自己选错", "text": "My bad, should have gotten the 1.8. Already reordered the thinner ones and they are fine", "cite": "标准款-2.5mm · 买家选错商品"}, {"tag": "换型号", "attr": "客户自己选错", "text": "I have the large frame and bought standard. My mistake, reordering the large version", "cite": "标准款-1.8mm · 不兼容"}], "body": "9 笔里 6 笔是换高度档、3 笔是换机型款。动作很明确：退货流程里直接给「换一档」的入口，而不是只给退款。按这一轮的比例，每 100 笔退货里大约有 10 笔只是想换一档，而这些客户已经用重新下单证明他们认这款东西。"}], "layers": [{"level": "描述性", "q": "发生了什么", "title": "高度类占了近一半，但它内部是两种完全不同的东西", "body": "94 条有原话的退货里，高度与贴合 43 条。其中整体高度 31 条，嫌高 15、嫌矮 16，判「正常」。而宽度 9 条全部指向太宽。同期防滑类只有 12 条，却贡献了 12 条「严重」里的 10 条。"}, {"level": "诊断性", "q": "为什么发生", "title": "一个做宽了的垫片，加上一句方向不对的选档建议，被平台统统记成了「与描述不符」", "body": "客户在退货表单上没有「太宽」这个选项，于是做宽了这件事被记成「与描述不符」「质量不满意」。同一条链上，页面那句「低鼻梁选 2.5mm」在把本该选 1.8 的人推向 2.5，而 2.5 恰好又是充电盒收纳的那一档——<b>一句建议同时制造了「太高」和「放不回盒子」两种退货<\/b>。两股力量叠在一起，让「与描述不符」看起来像个无解的大筐，实际上是三个各自能解的小问题：宽度、选档建议、充电盒分档说明。"}, {"level": "预测性", "q": "不改会怎样", "title": "换档引导省下来的钱，会被宽度和背胶继续吃掉；星级的压力从背胶那边来", "body": "只做换档引导而不收窄垫片，那 9 位嫌宽的客户换哪一档都还是宽，这部分会变成第二次退货。背胶那 10 条「严重」按 26% 的留言比例往回推，全部退货里大约有 38 位客户遇到过「掉了」这个级别的事，这些人写差评的可能性远高于嫌高嫌矮的人。<b>最先能看到的信号<\/b>：改掉选档建议之后，下一轮里「照页面指引选的」应该从 6 条降到 0；如果嫌高的占比没有跟着降，说明成因不在那句话，要回头查 2.5mm 这一档的实物高度。"}], "todo_lede": "按投入产出排：页面的事几乎不花钱，当周就动；改产品要排期打样；只有一条原话的线索，写成「待验证」，先挑最便宜的验。", "todo": [{"attr": "页面的事", "tier": "马上止血", "owner": "运营 · 页面", "body": "改掉页面上「低鼻梁建议选 2.5mm」这句选档建议。实测高度两头对称（嫌高 15、嫌矮 16），这句话与实际不符，正在单方向制造「太高」的退货。改成按「镜框离脸颊多远」来选。", "metric": "原话里「照页面指引选的」条数", "now": "6 条", "target": "0 条", "when": "改后满 30 天", "if_not": "嫌高的占比没跟着降 → 成因不在这句话，回头量 2.5mm 这一档的实物高度", "id": "A1", "problem": "页面的选档建议方向不对", "refs": [1, 10, 12, 14, 35, 86], "n": 6}, {"attr": "页面的事", "tier": "马上止血", "owner": "运营 · 页面", "body": "在首图和要点里分档说明：1.8mm 装上能放回充电盒，2.5mm 不能。同时核对「适配全部机型」这句标题——有客户反馈 Skyler、Headliner 装不上。", "metric": "「不兼容」占本线退货的比例", "now": "17.9%", "target": "12% 以下", "when": "改后次月", "if_not": "说明放不回盒子的不只 2.5mm，要拿实物逐档逐机型试一遍", "id": "A2", "problem": "2.5mm 充电盒收纳，页面没分档说明；「适配全部机型」不属实", "refs": [16, 25, 41, 48, 55, 61, 68, 84], "n": 8}, {"attr": "页面的事", "tier": "马上止血", "owner": "运营 + 产品", "body": "排查「防汗」「能用几个月」这两句话在页面所有位置上是怎么写的，确认有没有超出实测能力。不指认某一张图，把所有位置拉齐核一遍。", "metric": "「防滑宣称兑现度」这一项的条数", "now": "2 条", "target": "0 条", "when": "改后满 30 天", "if_not": "背胶本身的问题比宣称的问题大，动作转到下面换背胶那一条", "id": "A3", "problem": "防汗、耐用的宣称超出实测", "refs": [6, 93], "n": 2}, {"attr": "产品的事", "tier": "根治问题", "owner": "产品 · 结构", "body": "垫片收窄到不超过原装鼻托的轮廓。9 条原话全部指向太宽、四个规格都有，是整条线的事，不是某一档的事。其中一位客户自己动剪刀修过，可以直接当打样的起点。", "metric": "「宽度与覆盖」占有原话退货的比例", "now": "9.6%", "target": "3% 以下", "when": "新批次上架后 60 天", "if_not": "如果还有人说宽，看是不是集中在某一种机型上——那就是机型的鼻托轮廓不一样，要分机型开模", "id": "A4", "problem": "垫片比原装鼻托宽，胶边外露", "refs": [20, 23, 26, 52, 60, 64, 69, 70, 89], "n": 9}, {"attr": "产品的事", "tier": "根治问题", "owner": "产品 · 材料", "body": "换背胶，并补做出汗条件下的粘力测试；2.5mm 那一档单独测（垫得高，背胶受力大）。同时解决撕下来留胶的问题。", "metric": "防滑类里判「严重」的条数", "now": "10 条", "target": "3 条以内", "when": "新批次上架后 60 天", "if_not": "粘力够了还掉 → 问题在贴的方法，补一张贴法说明和酒精棉片", "id": "A5", "problem": "背胶牢固度、留胶", "refs": [6, 13, 28, 34, 49, 65, 66, 75, 88, 93], "n": 10}, {"attr": "其他", "tier": "防止再犯", "owner": "供应链 · 分装", "body": "查分装和贴标环节。3 笔少发、2 笔错发型号，全部被平台记成了「与描述不符」或「不兼容」，在常规报表上看不见。", "metric": "「发货准确」这一项的条数（少发、错发）", "now": "5 条", "target": "0 条", "when": "连续两个月", "if_not": "仍有 → 加出库前称重或扫码复核", "id": "A6", "problem": "少发、错发型号", "refs": [27, 32, 54, 57, 87], "n": 5}, {"attr": "产品的事", "tier": "防止再犯", "owner": "供应链 · 品控", "body": "【待验证 · 只有 1 条】有复购客户说同一个链接第二次买到的垫片明显更硬。抽两个批次各测一次硬度即可，成本很低。", "metric": "两批次硬度差", "now": "未测", "target": "出一份书面结论", "when": "15 天内", "if_not": "有差异 → 补进大货抽检项；无差异 → 这条线索关闭", "id": "A7", "problem": "同款两批硬度不一致（待验证）", "refs": [3], "n": 1}, {"attr": "客户自己选错", "tier": "马上止血", "owner": "客服 · 售后", "body": "退货流程里对「选错档 / 选错机型」直接给换货入口，而不是只给退款。9 条原话里 6 条要换高度档、3 条要换机型款，其中 4 位已经自己重新下单了。", "metric": "这类退货里转成换货的比例", "now": "接近 0", "target": "30%", "when": "上线后 60 天", "if_not": "客户不点换货 → 多半是怕再选错，把选档说明放进换货页", "id": "A8", "problem": "选错档的客户只能退款、不能换", "refs": [11, 33, 39, 41, 47, 51, 53, 73, 78], "n": 9}, {"attr": "不该买这款", "tier": "要老板定", "owner": "产品负责人", "body": "【要拍板，不是执行】3 位客户要的不是贴片这种形式（以为是螺丝款、想要整副替换、不愿意往眼镜上贴东西），1 位想要的是防镜腿下滑的。要决定：是把「贴片式、只管鼻托」在标题首图里写死、把这部分人挡在门外，还是补一条螺丝款去接这部分需求。", "metric": "「不该买这款」占有原话退货的比例", "now": "4.3%", "target": "2% 以下", "when": "决定落地后 60 天", "if_not": "说明挡不住 → 这部分需求是真的，重新评估要不要做螺丝款", "id": "A9", "problem": "买的人要的不是贴片式", "refs": [8, 37, 50, 56], "n": 4}], "caveats": ["「说不清该谁改」占 33%（31 条）。这不是打标失败，是平台的退货表单没给客户说清楚的地方——大量原话只有「fit」「case」「too thin」这样的残句。没有线索一律判说不清，不替客户猜。要压低这个比例，得在售后工单或退货问卷里加一道开放题。", "这个品类的平台原因码里没有「太高 / 太矮」这种带方向的码，所以「两头是否对称」只能在原话那一层算（31 条），没有全部退货那一层做对照。", "宽度那一项只有 9 条，判「一边倒」靠的是 9 比 0 这个形状，不是样本量。充电盒收纳 5 条全在 2.5mm，同理。都应该在下一轮数据里再看一眼。", "硅胶软硬 3 硬 1 软、同款批次硬度不同 1 条，样本太少，只写进了待验证，没有进结论。", "2 条德国站原话里有 1 条在导出时被弄坏了（变音字母变成了问号），意思还能认出来，照常打了标；德语的「多严重」没有单独校准过，这 2 条都按中度算。以后要是德国站多起来，必须重新导出为 UTF-8。", "多严重靠语气和后果判：明说东西掉了、坏了、生气了的算严重；只说高了矮了的算中度；自己认了选错的算轻度。", "末期数据没有回流完整的月份不要拿来看走势。"], "sig": "VOC 通用分析包 · 退货线 · 这一轮要回答的：哪些该改产品、哪些该改页面、哪些能挽回"}, "cfg": {"attrs": [{"name": "产品的事", "color": "A93B32", "dept": "产品 · 研发/品控", "dir": "改结构、改材料、大货抽检"}, {"name": "页面的事", "color": "B9821B", "dept": "运营 · 页面", "dir": "校准规格表、收敛宣称、补图文"}, {"name": "客户自己选错", "color": "6C7B8E", "dept": "不算产品问题", "dir": "用来算能挽回多少，优化换档引导"}, {"name": "不该买这款", "color": "35706A", "dept": "品牌 · 定位", "dir": "重新说清楚卖给谁"}, {"name": "说不清", "color": "AAB4C0", "dept": "—", "dir": "不拿来做决定，但占比本身是结论"}, {"name": "其他", "color": "C8CED6", "dept": "—", "dir": "包装、到货状态等"}], "texts": {"报告名": "退货 VOC 分诊报告", "对称章节眉题": "两头是否对称", "对称章节导语": "垫高这件事，嫌高和嫌矮的人一定同时存在，每个人鼻梁不一样，这是常态不是问题。要看的不是量，是<b>两头是否对称<\/b>：差得小属于个人差异；差得越多，说明整体往一头做偏了。", "能挽回说明": "退货后已经换了一档、或明确说要换。这部分不是流失，是选档引导没做好多付的一趟运费。", "落款": "VOC 通用分析包 · 先采集，再分析，分析完变成行动，行动到期要复盘", "评论报告名": "评论洞察报告"}, "bands": [[10, "正常", "两头基本对半，属于个人差异，那张规格表别动；但要到下一层再量一遍"], [30, "轻度偏移", "有一点往一头偏，按月看是否收敛"], [60, "明显偏移", "规格表要按实物重新校准"], [999, "严重异常", "整体做偏了方向，优先级高于任何局部调整"]], "item_min_n": 8}};
+const S = P.stats, INS = P.insights || {}, PREP = S.prep || {}, CFG = P.cfg || {}, TX = CFG.texts || {};
+const ATTRS = CFG.attrs || [], N = S.n;
+const AC = Object.fromEntries(ATTRS.map(a=>[a.name,a.color]));
+const CN = PREP['原因码中文'] || {};
+const KEEPSET = new Set(PREP['留下的码'] || []);
+const pc = (x,d=1)=>(x*100).toFixed(d)+'%';
+const esc = s=>String(s==null?'':s).replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+const el = h=>{const t=document.createElement('template');t.innerHTML=h.trim();return t.content.firstChild;};
+const main = document.getElementById('main');
+const sec = (eyebrow,h2,lede,inner)=>main.appendChild(el(
+  `<section><div class="eyebrow">${esc(eyebrow)}</div><h2>${h2}</h2>`+
+  (lede?`<p class="lede">${lede}</p>`:'')+inner+`</section>`));
+const rname = c => CN[c] || c;
+
+/* ---------- 报头 + 漏斗 ---------- */
+document.title = `${P.product}｜${TX['报告名']||'退货 VOC 分诊报告'}`;
+document.getElementById('m-eyebrow').innerHTML = esc(INS.eyebrow || TX['报告名'] || '退货 VOC 分诊报告') +
+  (P.is_sample?'<span class="sample-flag">示例数据</span>':'');
+document.getElementById('m-headline').innerHTML = INS.headline || '退货分诊';
+document.getElementById('m-subject').textContent = INS.subtitle || P.product;
+{
+  const k = PREP['口径']||{}, t = PREP['留剔']||{}, sc = PREP['本次范围']||{};
+  const steps = [
+    [PREP['退货行数'], '全部退货', '只算退货，换货不在内'],
+    [sc['行数'], '本次范围', `${sc['产品']||''}`],
+    [t['留'], '剔掉与产品无关的', `物流 / 客户改主意 / 没给原因，共 ${t['剔掉的码有几类']??'—'} 类`],
+    [N, '客户写了原因的', `占本次范围 ${k['退货明细行']?pc(N/k['退货明细行']):'—'}`]
+  ].filter(s=>s[0]!=null);
+  document.getElementById('funnel').innerHTML = steps.map((s,i)=>
+    `<div class="fstep ${i===steps.length-1?'keep':''}"><div class="num">${s[0]}</div>
+     <div class="lab">${esc(s[1])}</div><div class="sub">${esc(s[2])}</div></div>`).join('');
+}
+
+/* ---------- 口径数字条 + 原因码汇总 ---------- */
+{
+  const k = PREP['口径']||{}, v = PREP['原话']||{}, t = PREP['留剔']||{}, sc = PREP['本次范围']||{};
+  const kpi = [
+    [k['退货明细行'], '退货明细行', '本次范围内的退货行数'],
+    [k['退货订单'], '退货订单', '同一订单只算一次'],
+    [v['覆盖率']!=null?pc(v['覆盖率']):'—', '写了原因的占比', '写了字的 ÷ 明细行'],
+    [t['留']!=null?pc(t['留']/(sc['行数']||1)):'—', '留下的占比', `剔掉 ${t['剔']||0} 条与产品无关的`]
+  ].filter(x=>x[0]!=null);
+  const rd = PREP['原因码分布']||{};
+  const rows = Object.entries(rd).sort((a,b)=>b[1]-a[1]);
+  if(rows.length){
+    const tot = rows.reduce((s,r)=>s+r[1],0), max = rows[0][1];
+    const line = ([c,n])=>`<tr class="${KEEPSET.has(c)?'':'dropped'}">
+      <td>${esc(rname(c))}</td><td>${esc(c)}</td><td>${n}</td>
+      <td><div class="miniwrap">${pc(n/tot)}<div class="mini"><i style="width:${n/max*100}%"></i></div></div></td>
+      <td><span class="flag ${KEEPSET.has(c)?'keep':''}">${KEEPSET.has(c)?'留':'剔'}</span></td></tr>`;
+    const kept = rows.filter(r=>KEEPSET.has(r[0])), drop = rows.filter(r=>!KEEPSET.has(r[0]));
+    const sub = (lb,arr)=>{const s=arr.reduce((x,r)=>x+r[1],0);
+      return `<tr class="sub"><td colspan="2">${lb}</td><td>${s}</td><td>${pc(s/tot)}</td><td></td></tr>`;};
+    const W = PREP['提醒']||{};
+    sec(INS.scope_eyebrow||'口径与原因汇总', INS.scope_title||'退货原因的构成，和这次怎么清洗的',
+      INS.scope_lede||'', `
+      <div class="kpi">${kpi.map(x=>`<div class="k"><div class="n">${x[0]}</div>
+        <div class="l">${esc(x[1])}</div><div class="s">${esc(x[2])}</div></div>`).join('')}</div>
+      <div class="rtable-scroll"><table class="reasons"><thead><tr>
+        <th>退货原因</th><th>原因码</th><th>条数</th><th>占比</th><th>处理</th></tr></thead>
+        <tbody>${kept.map(line).join('')}${sub('留 · 跟产品有关',kept)}
+        ${drop.map(line).join('')}${sub('剔 · 跟产品无关',drop)}</tbody></table></div>
+      ${Object.values(W).filter(x=>typeof x==='string').map(x=>`<p class="note">⚠ ${esc(x)}</p>`).join('')}`);
+  }
+}
+
+/* ---------- 两头是否对称：整体一层 + 逐项一层 ---------- */
+{
+  const band=c=>({'正常':'#35706A','两头都有':'#35706A','轻度偏移':'#B9821B','明显偏移':'#A93B32',
+                  '严重异常':'#8B241C','一边倒':'#8B241C','样本少':'#AAB4C0'}[c]||'#6C7B8E');
+  const gauge=(lb,o)=>{
+    if(!o||!o['合计'])return '';
+    const c=band(o['判定']);
+    return `<div class="panel" style="margin-bottom:1px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;gap:12px;flex-wrap:wrap">
+        <h3 style="margin:0">${esc(lb)}</h3>
+        <span style="font-family:var(--mono);font-size:12px;color:${c}">差距 ${o['差距']} 个点 · ${esc(o['判定'])}</span></div>
+      <div style="display:flex;height:34px;font-family:var(--mono);font-size:12px;color:#fff">
+        <div style="width:${o['一头占比']}%;background:#1C2C4A;display:flex;align-items:center;justify-content:center">${esc(o['一头'])} ${o['一头条数']}</div>
+        <div style="width:${o['另一头占比']}%;background:#8792A3;display:flex;align-items:center;justify-content:center">${esc(o['另一头'])} ${o['另一头条数']}</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:7px">
+        <span>${o['一头占比']}%</span><span>合计 ${o['合计']} 条</span><span>${o['另一头占比']}%</span></div></div>`;
+  };
+  const rl = (PREP['两头对称_原因码层']||[]), vl = (S.sym_overall||[]);
+  let blocks='';
+  vl.forEach(v=>{
+    const r = rl.find(x=>x['属性']===v['属性']);
+    const left = r&&r['合计'] ? gauge(`${v['属性']} · 原因码那一层（全部退货）`, r)
+      : `<div class="panel" style="margin-bottom:1px"><h3>${esc(v['属性'])} · 原因码那一层</h3>
+         <p style="font-size:13.5px;color:var(--muted);margin:8px 0 0;line-height:1.65">
+         ${esc((r&&r['原因'])||'平台原因码里没有方向信息。')}</p></div>`;
+    blocks += `<div class="grid2">${left}${gauge(`${v['属性']} · 原话那一层（读出来的）`, v)}</div>`;
+  });
+  const items=(S.sym_items||[]).filter(x=>x['合计']>0);
+  let itemsHtml='';
+  if(items.length){
+    itemsHtml = `<div class="panel" style="margin-top:28px"><h3>同一把尺子，到下一层再量一遍</h3>
+      <p style="font-size:13.5px;color:var(--muted);margin:8px 0 16px;line-height:1.65">
+      整体对称，只说明整体没做偏，不等于没问题。下面每一项单独量：两头都有人说＝个人差异；几乎全在一头＝这一项做偏了。</p>`+
+      items.map(o=>`<div class="dual"><div>${esc(o['细项'])}</div>
+        <div class="bar">${o['一头条数']?`<i class="a" style="width:${o['一头占比']}%">${esc(o['一头'])} ${o['一头条数']}</i>`:''}
+        ${o['另一头条数']?`<i class="b" style="width:${o['另一头占比']}%">${esc(o['另一头'])} ${o['另一头条数']}</i>`:''}</div>
+        <div class="verdict" style="color:${band(o['判定'])}">${esc(o['判定'])} · 共 ${o['合计']} 条</div></div>`).join('')+`</div>`;
+  }
+  const rvv=S.rvv||{};
+  let rv='';
+  if(Object.keys(rvv).length){
+    rv=`<div class="panel" style="margin-top:28px"><h3>原因码说的方向，和原话说的方向，对得上吗</h3>
+      <p style="font-size:13.5px;color:var(--muted);margin:8px 0 16px;line-height:1.65">
+      对得上的多，说明原因码在这一款上可信；对不上，就只能看总量。这个数同时也是打标质量的自检。</p>`+
+      Object.entries(rvv).map(([c,v])=>`<div class="bar-row"><div>${esc(rname(c))}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${v['一致率']*100}%"></div></div>
+        <div class="v">${pc(v['一致率'],0)}</div></div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--muted);margin:-2px 0 10px">
+        ${v['条数']} 条里 一致 ${v['方向一致']} · 相反 ${v['方向相反']} · 没说方向 ${v['未表方向']}</div>`).join('')+`</div>`;
+  }
+  if(blocks||itemsHtml){
+    const bands=(CFG.bands||[]).map((b,i,arr)=>(b[0]>=999?`${arr[i-1]?arr[i-1][0]:''} 以上`:`${i?arr[i-1][0]+'–':'≤'}${b[0]}`)+` ${b[1]}`).join(' ｜ ');
+    const first=vl[0]||{};
+    sec(INS.sym_eyebrow||TX['对称章节眉题']||'两头是否对称',
+      INS.sym_title||(first['合计']?`${first['属性']}：两头差 ${first['差距']} 个点 —— ${first['判定']}`:'两头是否对称'),
+      INS.sym_lede||TX['对称章节导语']||'', blocks+itemsHtml+rv+
+      `<p class="note">整体那一层的判定线：${esc(bands)}。这几条线是这个品类自己标的，换品类要重新标。
+       逐项那一层：两头合计不到 ${CFG.item_min_n||8} 条只当线索。</p>`);
+  }
+}
+
+/* ---------- 连线图：平台记的原因 × 读出来该谁改 ---------- */
+if((S.links||[]).length){
+  sec(INS.sankey_eyebrow||'平台记的，和客户说的', INS.sankey_title||'平台记录的退货原因，和客户实际说的不是一回事',
+    INS.sankey_lede||'左边是平台的退货原因码，右边是逐条读完原话之后判定的"该谁改"。线越粗，条数越多。',
+    `<div class="sankey-shell"><div class="sankey-scroll">
+       <svg class="sankey" id="sankey" role="img" aria-label="平台退货原因与读出来的该谁改之间的流向图"></svg>
+     </div><div class="sankey-legend" id="legend"></div>
+     <div class="readout" id="readout"></div></div>`);
+  const W=900,PADT=14,GAP=9,NW=11,LW=180,RW=150,x1=LW,x2=W-RW-NW;
+  const lT={},rT={};
+  S.links.forEach(l=>{lT[l.r]=(lT[l.r]||0)+l.v;rT[l.a]=(rT[l.a]||0)+l.v;});
+  const lefts=Object.keys(lT).sort((a,b)=>lT[b]-lT[a]);
+  const rights=ATTRS.map(a=>a.name).filter(a=>rT[a]);
+  const unit=Math.max(2.2,Math.min(6,340/Math.max(...Object.values(lT),1)));
+  const hL=lefts.reduce((s,k)=>s+lT[k]*unit,0)+GAP*(lefts.length-1);
+  const hR=rights.reduce((s,k)=>s+rT[k]*unit,0)+GAP*(rights.length-1);
+  const H=Math.max(hL,hR)+PADT*2;
+  const lP={},rP={};
+  let y=PADT+(H-2*PADT-hL)/2; lefts.forEach(k=>{lP[k]={y0:y,h:lT[k]*unit,off:0};y+=lT[k]*unit+GAP;});
+  y=PADT+(H-2*PADT-hR)/2; rights.forEach(k=>{rP[k]={y0:y,h:rT[k]*unit,off:0};y+=rT[k]*unit+GAP;});
+  const svg=document.getElementById('sankey'); svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const NS='http://www.w3.org/2000/svg';
+  const e=(t,a)=>{const x=document.createElementNS(NS,t);for(const k in a)x.setAttribute(k,a[k]);return x;};
+  const gR=e('g',{}); svg.appendChild(gR);
+  lefts.forEach(r=>rights.forEach(a=>{
+    const f=S.links.find(l=>l.r===r&&l.a===a); if(!f)return;
+    const h=f.v*unit, ya=lP[r].y0+lP[r].off, yb=rP[a].y0+rP[a].off;
+    lP[r].off+=h; rP[a].off+=h;
+    const xa=x1+NW,xb=x2,mx=(xa+xb)/2;
+    const p=e('path',{d:`M${xa},${ya} C${mx},${ya} ${mx},${yb} ${xb},${yb} L${xb},${yb+h} C${mx},${yb+h} ${mx},${ya+h} ${xa},${ya+h} Z`,
+      fill:'#'+AC[a],class:'ribbon'});
+    p.dataset.r=r;p.dataset.a=a;p.dataset.v=f.v;gR.appendChild(p);
+  }));
+  const DEF='点一下或把鼠标移到任意一头（也可以用 Tab 键），看它流向哪里。';
+  const ro=document.getElementById('readout'); ro.textContent=DEF;
+  function focus(key,side,tot){
+    svg.classList.add('dim'); const parts=[];
+    gR.querySelectorAll('.ribbon').forEach(p=>{
+      const hit=side==='L'?p.dataset.r===key:p.dataset.a===key;
+      p.classList.toggle('on',hit);
+      if(hit)parts.push((side==='L'?p.dataset.a:rname(p.dataset.r))+' '+p.dataset.v+'条');
+    });
+    ro.innerHTML=`<b>${esc(side==='L'?rname(key):key)}</b>（${tot} 条）→ `+parts.map(esc).join(' · ');
+  }
+  function clr(){svg.classList.remove('dim');gR.querySelectorAll('.ribbon').forEach(p=>p.classList.remove('on'));ro.textContent=DEF;}
+  function node(key,side,pos,tot){
+    const x=side==='L'?x1:x2;
+    svg.appendChild(e('rect',{x,y:pos.y0,width:NW,height:pos.h,fill:side==='L'?'#1C2C4A':'#'+AC[key]}));
+    const g=e('g',{class:'nodehit',tabindex:'0',role:'button'});
+    g.appendChild(e('rect',{x:side==='L'?0:x+NW,y:pos.y0-3,width:side==='L'?x1:RW,height:pos.h+6,fill:'transparent'}));
+    const tx=side==='L'?x1-10:x2+NW+10;
+    const t=e('text',{x:tx,y:pos.y0+pos.h/2+1,class:'nodelab','text-anchor':side==='L'?'end':'start','dominant-baseline':'middle'});
+    t.textContent=side==='L'?rname(key):key;
+    g.appendChild(t);
+    if(pos.h>26){const v=e('text',{x:tx,y:pos.y0+pos.h/2+14,class:'nodeval','text-anchor':side==='L'?'end':'start','dominant-baseline':'middle'});
+      v.textContent=tot+' 条';g.appendChild(v);}
+    ['mouseenter','click','focus'].forEach(ev=>g.addEventListener(ev,()=>focus(key,side,tot)));
+    ['mouseleave','blur'].forEach(ev=>g.addEventListener(ev,clr));
+    svg.appendChild(g);
+  }
+  lefts.forEach(k=>node(k,'L',lP[k],lT[k])); rights.forEach(k=>node(k,'R',rP[k],rT[k]));
+  document.getElementById('legend').innerHTML=rights.map(a=>
+    `<span><i class="swatch" style="background:#${AC[a]}"></i><b>${esc(a)}</b> ${rT[a]}</span>`).join('');
+}
+
+/* ---------- 该谁改 + 严重档的构成 ---------- */
+{
+  const OWN=INS.owners||{};
+  const cards=ATTRS.filter(a=>S.attr[a.name]).map(a=>{
+    const n=S.attr[a.name], o=OWN[a.name]||[a.dept,a.dir];
+    return `<div class="tc" style="--c:#${a.color}"><div class="code">${esc(a.name)}</div>
+      <div class="big">${n}</div><div class="pct">占 ${N} 条 ${pc(n/N)}</div>
+      <div class="who">${esc(o[0])}</div><div class="act">${esc(o[1])}</div></div>`;}).join('');
+  const sv=(S.sev_by_l1||[]).filter(x=>x.n>0), maxn=Math.max(1,...sv.map(x=>x.n));
+  const sevPanel = sv.length&&S.sev_total ? `<div class="panel" style="margin-top:28px">
+    <h3>量小不等于不要紧：「严重」那一档是谁贡献的</h3>
+    <p style="font-size:13.5px;color:var(--muted);margin:8px 0 16px;line-height:1.65">
+    灰条是这一类的条数，红条是其中判为「严重」的。条数少但红得多的，不影响退货量，影响星级。</p>`+
+    sv.map(x=>`<div class="sevrow"><div>${esc(x.l1)}</div>
+      <div class="track"><div class="all" style="width:${x.n/maxn*100}%"></div><div class="hot" style="width:${x.hot/maxn*100}%"></div></div>
+      <div class="v">${x.n} 条 · 严重 ${x.hot}</div></div>`).join('')+
+    `<p style="font-family:var(--mono);font-size:11px;color:var(--muted);margin:12px 0 0">「严重」共 ${S.sev_total} 条</p></div>` : '';
+  sec(INS.triage_eyebrow||'分诊结果', INS.triage_title||`该谁改：${N} 条原话的责任分派`,
+    INS.triage_lede||'', `<div class="triage">${cards}</div>`+
+    (S.save?`<p class="note">其中 <b>${S.save}</b> 条（${pc(S.save/N)}）标为「能挽回」——${esc(TX['能挽回说明']||'退货后已经换了或明确说要换。这部分不是流失。')}</p>`:'')+sevPanel);
+}
+
+/* ---------- 客户在说什么 ---------- */
+{
+  const ent=Object.entries(S.tags_in||{}).sort((a,b)=>b[1]-a[1]);
+  if(ent.length){
+    const max=ent[0][1];
+    const bars=ent.map(([t,v])=>`<div class="bar-row"><div>${esc(t)}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${v/max*100}%"></div></div>
+      <div class="v">${v}</div></div>`).join('');
+    sec(INS.pain_eyebrow||'客户在说什么', INS.pain_title||'客户在说什么',
+      INS.pain_lede||`进排名的门槛：至少提到 ${S.gate} 次（有原话的 ${N} 条 × 3%，不到 3 取 3）。门槛跟着数据量走，不写死。`,
+      `<div class="panel">${bars}</div>`+(INS.pain_note?`<p class="note">${INS.pain_note}</p>`:''));
+  }
+}
+
+/* ---------- 自由章节 ---------- */
+(INS.sections||[]).forEach(s=>{
+  let inner='';
+  if(s.bars&&s.bars.length){
+    const max=Math.max(...s.bars.map(b=>b[1]));
+    inner+=`<div class="panel">`+s.bars.map(b=>`<div class="bar-row"><div>${esc(b[0])}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${b[1]/max*100}%"></div></div>
+      <div class="v">${b[1]}</div></div>`).join('')+`</div>`;
+  }
+  if(s.quotes&&s.quotes.length){
+    inner+=`<div class="quotes">`+s.quotes.map(q=>`<div class="q">
+      ${q.tag?`<span class="tag" style="background:#${AC[q.attr]||'1C2C4A'}">${esc(q.tag)}</span>`:''}
+      <p>“${esc(q.text)}”</p><div class="meta">${esc(q.cite||'')}</div></div>`).join('')+`</div>`;
+  }
+  if(s.body) inner+=`<p class="note">${s.body}</p>`;
+  sec(s.eyebrow||'', s.title||'', s.lede||'', inner);
+});
+
+/* ---------- 三层洞察 ---------- */
+if((INS.layers||[]).length){
+  sec(INS.layers_eyebrow||'三层洞察', INS.layers_title||'从发生了什么，到不改会怎样', '',
+    `<div class="layers">`+INS.layers.map(l=>`<div class="ly"><div class="lv">${esc(l.level)} · ${esc(l.q||'')}</div>
+      <h3>${esc(l.title)}</h3><p>${l.body}</p></div>`).join('')+`</div>`);
+}
+
+/* ---------- 行动清单 ---------- */
+if((INS.todo||[]).length){
+  const kpi5=t=>{
+    if(t.metric){
+      return `<b>看哪个数</b> ${esc(t.metric)}<br><b>现在</b> ${esc(t.now??'—')} → <b>要到</b> ${esc(t.target??'—')}<br>
+        <b>哪天看</b> ${esc(t.when??'—')}`+(t.if_not?`<span class="ifnot"><b>要是没变</b> ${esc(t.if_not)}</span>`:'');
+    }
+    return esc(t.kpi||'');
+  };
+  sec(INS.todo_eyebrow||'行动清单', INS.todo_title||'下一步做什么', INS.todo_lede||'',
+    `<table class="todo"><thead><tr><th style="width:96px">该谁改</th><th>动作</th>
+     <th style="width:120px">谁负责</th><th style="width:250px">怎么才算做完</th>
+     <th style="width:60px">依据</th></tr></thead><tbody>`+
+    INS.todo.map(t=>`<tr><td><span class="pill" style="background:#${AC[t.attr]||'1C2C4A'}">${esc(t.attr||'')}</span>
+      ${t.tier?`<span class="tier">${esc(t.tier)}</span>`:''}</td>
+      <td>${t.body}</td><td class="own">${esc(t.owner||'')}</td>
+      <td class="own kpi5">${kpi5(t)}</td><td class="own">${t.n!=null?t.n+' 条':''}</td></tr>`).join('')+
+    `</tbody></table>`);
+}
+
+/* ---------- 原话查阅 ---------- */
+{
+  sec(INS.voice_eyebrow||'原话查阅', INS.voice_title||`${N} 条原话，按「该谁改」筛选`,
+    INS.voice_lede||'每个结论都能点回具体的某一条。发现必须有客户的原话撑着，否则不成立。',
+    `<div class="filters" id="filters"></div><div id="vcount"></div><div class="vlist" id="vlist"></div>`);
+  const fb=document.getElementById('filters'),list=document.getElementById('vlist'),cn=document.getElementById('vcount');
+  let active='全部';
+  ['全部'].concat(ATTRS.map(a=>a.name).filter(a=>S.attr[a])).forEach(a=>{
+    const b=document.createElement('button');
+    b.className='chip';b.type='button';b.textContent=a==='全部'?`全部 ${N}`:`${a} ${S.attr[a]}`;
+    b.setAttribute('aria-pressed',a===active);
+    b.onclick=()=>{active=a;fb.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true');render();};
+    fb.appendChild(b);
+  });
+  function render(){
+    const rows=active==='全部'?P.records:P.records.filter(r=>r['该谁改']===active);
+    cn.textContent=`显示 ${rows.length} / ${N} 条`;
+    list.innerHTML=rows.map(r=>`<div class="vcard"><div class="head">
+      <span class="pill" style="background:#${AC[r['该谁改']]||'AAB4C0'}">${esc(r['该谁改']||'')}</span>
+      <span class="idx">#${r['序号']} · ${esc(r['规格']||'')} · ${esc(rname(r['平台原因码']))}${r['多严重']==='严重'?' · 严重':''}${r['能否挽回']==='是'?' · 能挽回':''}</span></div>
+      <div class="txt">${esc(r['原话'])}</div>
+      <div class="tags">${esc([r['哪件事_细项'],r['什么情况下'],r['谁在说'],r['过程感受']].filter(Boolean).join(' · '))}</div></div>`).join('');
+  }
+  render();
+}
+
+/* ---------- 页脚 ---------- */
+{
+  const k=PREP['口径']||{},v=PREP['原话']||{},sc=PREP['本次范围']||{};
+  const scope=[
+    `范围：${P.product}${sc['站点']&&sc['站点']!=='全部'?' · '+sc['站点']:''}${PREP['时间跨度']?' · '+PREP['时间跨度'].join(' ~ '):''}`,
+    `口径：退货明细行 ${k['退货明细行']??'—'} / 退货订单 ${k['退货订单']??'—'}`,
+    `后面所有比例的分母都是这 ${N} 条有原话的记录，不是全部退货`,
+    `一条原话可以说到好几件事，所以各项加起来大于 ${N}；「该谁改」每条只选一个，加起来等于 ${N}`,
+    `网页里不带订单号和记录编号`
+  ];
+  document.getElementById('f-scope').innerHTML=scope.map(s=>`<li>${esc(s)}</li>`).join('');
+  const cav=(INS.caveats||[]).slice();
+  if(v['覆盖率']!=null)cav.unshift(`写了原因的只占 ${pc(v['覆盖率'])}。结论只适用于「愿意说话的那部分退货客户」，而且这部分人偏负面`);
+  document.getElementById('f-caveats').innerHTML=cav.map(s=>`<li>${esc(s)}</li>`).join('');
+  document.getElementById('f-sig').textContent=INS.sig||TX['落款']||'';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+{
+  "品类": "AI 眼镜配件",
+  "配置版本": "v0.2",
+  "文件编码": "utf-8-sig",
+  "原始行数": 371,
+  "退货行数": 357,
+  "本次范围": {
+    "产品": "A款-防滑鼻托套装(2对装)",
+    "站点": "全部",
+    "行数": 357
+  },
+  "口径": {
+    "退货明细行": 357,
+    "退货订单": 332
+  },
+  "留剔": {
+    "留": 283,
+    "剔": 74,
+    "剔的构成": {
+      "客户改主意": 40,
+      "物流": 19,
+      "没给原因": 15
+    },
+    "剔掉的码有几类": 10
+  },
+  "原话": {
+    "范围内写了字的": 101,
+    "覆盖率": 0.283,
+    "只有平台套话被剔掉": 7,
+    "留下且有原话": 94
+  },
+  "原因码分布": {
+    "NOT_AS_DESCRIBED": 89,
+    "NOT_COMPATIBLE": 64,
+    "DEFECTIVE": 61,
+    "QUALITY_UNACCEPTABLE": 38,
+    "UNWANTED_ITEM": 29,
+    "ORDERED_WRONG_ITEM": 22,
+    "NO_REASON_GIVEN": 15,
+    "MISORDERED": 9,
+    "FOUND_BETTER_PRICE": 7,
+    "DAMAGED_BY_FC": 7,
+    "UNAUTHORIZED_PURCHASE": 4,
+    "UNDELIVERABLE_UNKNOWN": 4,
+    "MISSED_ESTIMATED_DELIVERY": 2,
+    "DAMAGED_BY_CARRIER": 2,
+    "SWITCHEROO": 2,
+    "MISSING_PARTS": 2
+  },
+  "原因码占比": {
+    "NOT_AS_DESCRIBED": 0.2493,
+    "NOT_COMPATIBLE": 0.1793,
+    "DEFECTIVE": 0.1709,
+    "QUALITY_UNACCEPTABLE": 0.1064,
+    "UNWANTED_ITEM": 0.0812,
+    "ORDERED_WRONG_ITEM": 0.0616,
+    "NO_REASON_GIVEN": 0.042,
+    "MISORDERED": 0.0252,
+    "FOUND_BETTER_PRICE": 0.0196,
+    "DAMAGED_BY_FC": 0.0196,
+    "UNAUTHORIZED_PURCHASE": 0.0112,
+    "UNDELIVERABLE_UNKNOWN": 0.0112,
+    "MISSED_ESTIMATED_DELIVERY": 0.0056,
+    "DAMAGED_BY_CARRIER": 0.0056,
+    "SWITCHEROO": 0.0056,
+    "MISSING_PARTS": 0.0056
+  },
+  "原因码中文": {
+    "NOT_AS_DESCRIBED": "与描述不符",
+    "DEFECTIVE": "有缺陷",
+    "QUALITY_UNACCEPTABLE": "质量不满意",
+    "NOT_COMPATIBLE": "不兼容",
+    "ORDERED_WRONG_ITEM": "买家选错商品",
+    "MISORDERED": "下错单",
+    "DAMAGED_BY_FC": "运营中心损坏",
+    "DAMAGED_BY_CARRIER": "承运商损坏",
+    "MISSED_ESTIMATED_DELIVERY": "错过预计送达",
+    "MISSING_PARTS": "缺少部件",
+    "SWITCHEROO": "疑似调包",
+    "UNDELIVERABLE_UNKNOWN": "无法投递",
+    "NEVER_ARRIVED": "从未送达",
+    "EXTRA_ITEM": "多发商品",
+    "UNWANTED_ITEM": "不再需要",
+    "FOUND_BETTER_PRICE": "找到更便宜的",
+    "UNAUTHORIZED_PURCHASE": "未经授权购买",
+    "NO_REASON_GIVEN": "未提供原因"
+  },
+  "留下的码": [
+    "DEFECTIVE",
+    "MISORDERED",
+    "NOT_AS_DESCRIBED",
+    "NOT_COMPATIBLE",
+    "ORDERED_WRONG_ITEM",
+    "QUALITY_UNACCEPTABLE"
+  ],
+  "大筐": [
+    "NOT_AS_DESCRIBED",
+    "NOT_COMPATIBLE"
+  ],
+  "两头对称_原因码层": [
+    {
+      "可判定": false,
+      "合计": 0,
+      "原因": "这个品类的平台原因码里没有方向信息，只能在原话那一层看",
+      "属性": "整体高度"
+    }
+  ],
+  "站点分布": {
+    "US": 92,
+    "DE": 2
+  },
+  "规格分布": {
+    "标准款-2.5mm": 35,
+    "标准款-1.8mm": 27,
+    "大号款-2.5mm": 18,
+    "大号款-1.8mm": 14
+  },
+  "属性分布": {
+    "适配机型": {
+      "标准款": 62,
+      "大号款": 32
+    },
+    "高度档": {
+      "2.5mm": 53,
+      "1.8mm": 41
+    }
+  },
+  "时间跨度": [
+    "2026-01",
+    "2026-08"
+  ],
+  "提醒": {
+    "编码损坏": "原话里出现 2 处字面的 '??'。非英文字符在导出时就丢了，救不回来。要求重新导出为 UTF-8，不要拿坏掉的原话去打标。"
+  }
+}

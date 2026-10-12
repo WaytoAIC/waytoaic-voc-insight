@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v1.0.1 — 2026-10-12
+
+- 文档与示例去掉原品类残留词和示例标签名；SKILL.md 的 license 字段改为 MIT（与仓库许可一致）。脚本逻辑不变。
+- Docs and samples: removed leftover category-specific wording and sample tag names; the `license` field in SKILL.md now reads MIT, matching the repository license. No script changes.
+
 ## v1.0.0 — 2026-09-22
 
 - 基础版：退货线、评论线（清洗 → 逐条打标 → 算数 → 网页报告 + Excel + 两张表）
